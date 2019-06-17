@@ -1,6 +1,10 @@
 package Dao;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
+
+import Javaben.Post;
 import Javaben.Users;
 import Util.JDBCUtil;
 
@@ -147,4 +151,74 @@ public class UsersDao {
 		}
 
 
+		//执行封装一个分页查询
+		public List<Post> selectPost(String title,String username,String time,String mine,String scan){
+			List<Post> list = new ArrayList<Post>();
+			Connection conn = null;
+			PreparedStatement ps = null;
+			ResultSet rs = null;
+			
+			try {
+				conn = JDBCUtil.getConn();
+				
+				String sql = "select * from post limit ?,?,?,?,?";
+				
+				ps = conn.prepareStatement(sql);
+				
+				ps.setString(1, title);
+				ps.setString(2, username);
+				ps.setString(3, time);
+				ps.setString(4, mine);
+				ps.setString(5, scan);
+				
+				rs=ps.executeQuery();
+				while(rs.next()){
+					Post post = new Post();
+					post.setTitle(rs.getString("title"));
+					post.setUsername(rs.getString("username"));
+					post.setTime(rs.getString("time"));
+					post.setTime(rs.getString("mine"));
+					post.setScan(rs.getString("scan"));
+					list.add(post);
+				}
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				JDBCUtil.closeAll(conn, ps, rs);
+				
+			}
+			return list;
+			
+		}
+		//计数
+		public int countPost(){
+			int i = 0;
+			Connection conn = null;
+			PreparedStatement ps = null;
+			ResultSet rs = null;
+			
+			try {
+				conn = JDBCUtil.getConn();
+				
+				String sql = "select count(*) from post";
+				
+				ps = conn.prepareStatement(sql);
+				
+				rs = ps.executeQuery();
+				
+				if(rs.next()){
+					i = rs.getInt(1);
+				}
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				JDBCUtil.closeAll(conn, ps, rs);
+			}
+			return i;
+			
+		}
 }
