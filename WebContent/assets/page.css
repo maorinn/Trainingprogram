@@ -1,0 +1,57 @@
+@CHARSET "UTF-8";
+
+
+input{
+	border-radius: 5px;
+	border: 2px solid #dce4ec;
+	outline: none;
+}
+.form-user01{
+	position: relative;
+	top: 20px;
+	right: -50px;
+}
+.form-user02{
+	width: 680px;
+	height: 45px;
+}
+.form-pwd01{
+	position: relative;
+	top: 42px;
+	right: -133px;
+}
+.form-pwd02{
+	width: 680px;
+	height: 45px;
+}
+.form-pwb-b1{
+	position: relative;
+	right: 5px;
+}
+.form-pwb-b2{
+	position: relative;
+	top: 40px;
+	right: 810px;
+}
+.form-che01{
+	position: relative;
+	top: 100px;
+	left: -550px;
+}
+
+.form-sub{
+	background:#2c3e50;
+	width:680px;
+	height:60px;
+	position: relative;
+	top: 100px;
+	right: -130px;
+}
+.ree01{
+	position: relative;
+	top: 110px;
+	left: 130px;
+}
+
+
+
