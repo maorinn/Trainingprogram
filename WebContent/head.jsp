@@ -37,14 +37,14 @@
 				<ul id="logged-out-menu" class="nav navbar-nav navbar-right">
 					
 					<li>
-						<a href="/register">
+						<a href="register.jsp">
 							<i class="fa fa-pencil fa-fw hidden-sm hidden-md hidden-lg"></i>
 							<span>注册</span>
 						</a>
 					</li>
 					
 					<li>
-						<a href="/login">
+						<a href="login.jsp">
 							<i class="fa fa-sign-in fa-fw hidden-sm hidden-md hidden-lg"></i>
 							<span>登录</span>
 						</a>
