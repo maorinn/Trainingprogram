@@ -37,7 +37,11 @@
 		};
 	</script>
 
-	
+	<style type="text/css">
+				#input1:hover{
+				
+				}
+			</style>
 	
 </head>
 
@@ -76,7 +80,33 @@
 	
 </div>
 <div class="row">
+
 	<div class="col-lg-9 col-sm-12">
+	<div style="height:45px;">
+	
+	    <c:if test="${user!=null}" >
+	   window.onload=function function_name () {
+ 
+ 	  var b=document.getElementById('input1') 
+
+ 	
+  b.value="新主题"; 
+ 	
+ }
+function_name();
+	    
+	    </c:if>
+	 <script type="text/javascript">
+	 
+			</script>
+	
+	    
+	
+<form action="">
+<input type="button" id='input1' value="登入以发表" style="width:100px;height:45px;background-color:#1a242f;color:#fff;border-radius: 5px; " onclick="hpsb()" >
+</form>
+</div>
+<hr>
 		<h1 class="categories-title">版块</h1>
 		<ul class="categories" itemscope itemtype="http://www.schema.org/ItemList">
 			
@@ -276,6 +306,93 @@
 
 	<div class="hide">
 	</div>
+	
+	
+	
+
+	
+	<div component="composer" class="composer resizable" data-uuid="d75c9974-c60b-4512-a3f5-5ab2efb9cdbc" style="top:72.6124%;" id='i'>
+
+	<div class="composer-container">
+		<nav class="navbar navbar-fixed-top mobile-navbar hidden-md hidden-lg">
+			<div class="btn-group">
+				<button class="btn btn-sm btn-primary composer-discard" data-action="discard" tabindex="-1"><i class="fa fa-times"></i></button>
+				<button class="btn btn-sm btn-primary composer-minimize" data-action="minimize" tabindex="-1"><i class="fa fa-minus"></i></button>
+			</div>
+			
+			<div class="category-name-container">
+				<span class="category-name">交易</span> <i class="fa fa-sort"></i>
+			</div>
+			
+			
+			<div class="btn-group">
+				<button class="btn btn-sm btn-primary composer-submit" data-action="post" tabindex="-1"><i class="fa fa-chevron-right"></i></button>
+			</div>
+		</nav>
+		<form action="/test">
+		<div class="row title-container">
+			
+			<div>
+				
+				<input class="title form-control" type="text" tabindex="1" name="title" placeholder="在此输入您主题的标题..." value="">
+				
+				<ul class="dropdown-menu quick-search-results hidden">
+					
+
+				</ul>
+			</div>
+
+			
+			<div class="category-list-container hidden-sm hidden-xs"><div component="category-selector" class="btn-group pull-right dropup">
+	
+	<div component="category-selector-search" class="hidden">
+		<input type="text" class="form-control" autocomplete="off">
+	</div>
+	
+</div></div>
+			
+
+			<div class="pull-right draft-icon"></div>
+
+			
+		</div>
+
+
+
+		<div class="row write-preview-container">
+			<div class="write-container">
+				<div class="help-text">
+					<span class="help">编写帮助 <i class="fa fa-question-circle"></i></span>
+				</div>
+				<div class="pull-right draft-icon hidden-md hidden-lg"></div>
+				<!-- <textarea class="write" tabindex="4" dir="ltr"></textarea> -->
+				<input type="text" class="write" name="content">
+			</div>
+
+		</div>
+
+		<div class="btn-group pull-right action-bar hidden-sm hidden-xs">
+				<button class="btn btn-default composer-discard" data-action="discard" tabindex="-1"><i class="fa fa-times"></i> 撤销</button>
+
+				<button type="submit" class="btn btn-primary composer-submit" data-action="post" tabindex="6"><i class="fa fa-check"></i> 提交</button>
+			</form>
+			</div>
+		<div class="tag-row">
+			<div class="tags-container">
+				<div class="btn-group dropup hidden" component="composer/tag/dropdown">
+					<button class="btn btn-default dropdown-toggle" data-toggle="dropdown" type="button">
+						<span class="visible-sm-inline visible-md-inline visible-lg-inline"><i class="fa fa-tags"></i></span>
+						<span class="caret"></span>
+					</button>
+				</div>
+				
+		</div>
+	</div>
+</div>
+	
+	
+	
+	
 	<script type="text/javascript">
 	function rgb () {
 	 	var a=parseInt(Math.random()*255);
@@ -286,13 +403,19 @@
 	 function function_name () {
 		 
 	 	 var d=document.getElementById('card'); 
-	 	
-	 	 
+	 	var i=document.getElementById('i');
+	 	i.style.visibility="hidden";
 	    d.style.borderColor=rgb();
 	 	/*d.style.backgroundColor=rgb();
 	 	d.style.color=rgb();*/
 	 	
 	 }
+	 function hpsb (){
+		var i=document.getElementById('i');
+		i.style.visibility="visible";
+		
+	 }
+	 
 	function_name();
 			</script>
 </body>
