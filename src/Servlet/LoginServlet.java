@@ -36,13 +36,12 @@ public class LoginServlet extends HttpServlet {
 			//保存到session作用域
 			HttpSession session = request.getSession();
 			session.setAttribute("user", user);
-			
 			//登录成功的页面url
-			response.sendRedirect("---.html");
+			request.getRequestDispatcher("---.html").forward(request, response);
 		}else{
             //如果错误就跳转到登陆页面
 			//密码或用户名错误从新登录
-			response.sendRedirect("---.jsp");
+			response.sendRedirect("login.jsp");
 		}
 	}
 
