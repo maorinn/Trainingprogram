@@ -28,7 +28,7 @@ public class LoginServlet extends HttpServlet {
 		
 		//去数据库查询验证用户名和密码是否正确
 		UsersDao dao = new UsersDao();
-		Users user = dao.selectUser2(username, password);
+		Users user = dao.selecteUserName(username,username,password);
 		
 		//判断  如果正确就跳转到登陆成功的页面（展示员工列表的首页）
 		if(user!=null){
@@ -37,11 +37,20 @@ public class LoginServlet extends HttpServlet {
 			HttpSession session = request.getSession();
 			session.setAttribute("user", user);
 			//登录成功的页面url
+<<<<<<< HEAD
 			request.getRequestDispatcher("---.html").forward(request, response);
 		}else{
             //如果错误就跳转到登陆页面
 			//密码或用户名错误从新登录
 			response.sendRedirect("login.jsp");
+=======
+			response.sendRedirect("index.jsp");
+		}else{
+            //如果错误就跳转到登陆页面
+			//密码或用户名错误从新登录
+			System.out.println("登入失败");
+			response.sendRedirect("---.jsp");
+>>>>>>> 9abfe5f6eb81594f45e81203c5f4a7a822a5d4d3
 		}
 	}
 

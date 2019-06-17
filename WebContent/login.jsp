@@ -82,7 +82,7 @@
            <a href="#" style="color:#C9E0E0; text-decoration: none; font-size: 17px;">登录</a>
         </div>
         <div class="login">
-		    <form class="form-01" action="#"method="post">
+		    <form class="form-01" action="LoginServlet.action"method="post">
                 <span class="form-user01"><b class="form-pwb-b1">用户名/邮箱      </b><input class="form-user02" style='font-size:15px;;'type="text" name="username"placeholder="用户名/邮箱"></span>
                 <span class="form-pwd01"><b class="form-pwb-b2">密码      </b><input class="form-pwd02" style='font-size:16px;'type="password" name="password"placeholder="密码"></span>
                 <span class="form-che01"><input type="checkbox" id="submit" value="记住我？">记住我？</span>
