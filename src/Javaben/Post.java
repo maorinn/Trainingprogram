@@ -6,16 +6,18 @@ public class Post {
 	private String time;
 	private String mine;
 	private String scan;
+	private String block;
 	public Post() {
 		super();
 	}
-	public Post(String title, String username, String time, String mine, String scan) {
+	public Post(String title, String username, String time, String mine, String scan, String block) {
 		super();
 		this.title = title;
 		this.username = username;
 		this.time = time;
 		this.mine = mine;
 		this.scan = scan;
+		this.block = block;
 	}
 	public String getTitle() {
 		return title;
@@ -47,12 +49,17 @@ public class Post {
 	public void setScan(String scan) {
 		this.scan = scan;
 	}
+	public String getBlock() {
+		return block;
+	}
+	public void setBlock(String block) {
+		this.block = block;
+	}
 	@Override
 	public String toString() {
 		return "Post [title=" + title + ", username=" + username + ", time=" + time + ", mine=" + mine + ", scan="
-				+ scan + "]";
+				+ scan + ", block=" + block + "]";
 	}
-	
 	
 	
 	

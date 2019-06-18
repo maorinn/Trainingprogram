@@ -152,7 +152,7 @@ public class UsersDao {
 
 
 		//执行封装一个分页查询
-		public List<Post> selectPost(String title,String username,String time,String mine,String scan){
+		public List<Post> selectPost(int page,int pageSize){
 			List<Post> list = new ArrayList<Post>();
 			Connection conn = null;
 			PreparedStatement ps = null;
@@ -161,15 +161,13 @@ public class UsersDao {
 			try {
 				conn = JDBCUtil.getConn();
 				
-				String sql = "select * from post limit ?,?,?,?,?";
+				String sql = "select * from post limit ?,?";
 				
 				ps = conn.prepareStatement(sql);
 				
-				ps.setString(1, title);
-				ps.setString(2, username);
-				ps.setString(3, time);
-				ps.setString(4, mine);
-				ps.setString(5, scan);
+				ps.setInt(1, page);
+				ps.setInt(2, pageSize);
+			
 				
 				rs=ps.executeQuery();
 				while(rs.next()){
@@ -179,6 +177,7 @@ public class UsersDao {
 					post.setTime(rs.getString("time"));
 					post.setTime(rs.getString("mine"));
 					post.setScan(rs.getString("scan"));
+					post.setBlock(rs.getString("block"));
 					list.add(post);
 				}
 				
@@ -221,4 +220,46 @@ public class UsersDao {
 			return i;
 			
 		}
+		
+		//封装一个根据ID查询帖子
+		public List<Post> selectPost(int id){
+			List<Post> list = new ArrayList<Post>();
+			Connection conn = null;
+			PreparedStatement ps = null;
+			ResultSet rs = null;
+			
+			try {
+				conn = JDBCUtil.getConn();
+				
+				String sql = "select * from post where postid=?";
+				
+				ps = conn.prepareStatement(sql);
+				
+				ps.setInt(1, id);
+				
+			
+				
+				rs=ps.executeQuery();
+				while(rs.next()){
+					Post post = new Post();
+					post.setTitle(rs.getString("title"));
+					post.setUsername(rs.getString("username"));
+					post.setTime(rs.getString("time"));
+					post.setTime(rs.getString("mine"));
+					post.setScan(rs.getString("scan"));
+					post.setBlock(rs.getString("block"));
+					list.add(post);
+				}
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				JDBCUtil.closeAll(conn, ps, rs);
+				
+			}
+			return list;
+			
+		}
+		
 }
