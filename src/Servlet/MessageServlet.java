@@ -1,13 +1,17 @@
 package Servlet;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import Dao.UsersDao;
+import Dao.postDao;
+import vo.post;
 
 /**
  * Servlet implementation class MessageServlet
@@ -20,12 +24,25 @@ public class MessageServlet extends HttpServlet {
 		//处理中文乱码
 		request.setCharacterEncoding("utf-8");
 		
-		String usreid = request.getParameter("usreid");
-		String time = request.getParameter("time");
-		String bt = request.getParameter("bt");
-		String nr = request.getParameter("nr");
 		
-		UsersDao dao = new UsersDao();
+		Date date = new Date();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日 HH:mm:ss");
+		String dateString = sdf.format(date);
+		System.out.println(dateString);
+		
+		String userid = request.getParameter("userid");
+		String time = request.getParameter("time");
+		String title = request.getParameter("title");
+		String mine = request.getParameter("mine");
+		post post = new post(title, userid, time, mine);
+		postDao postDao = new postDao();
+		int insert = postDao.insert(post);
+		if (insert>0) {
+			System.out.println("发帖成功");
+		}else {
+			System.out.println("发帖失败");
+		}
+		
 		
 	}
 
