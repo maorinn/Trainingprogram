@@ -191,6 +191,42 @@ public class UsersDao {
 			return list;
 			
 		}
+		
+		//根据id查询时间
+		public int selectPostById(String time){
+			int i=0;
+			Connection conn = null;
+			PreparedStatement ps = null;
+			ResultSet rs = null;
+			
+			try {
+				conn = JDBCUtil.getConn();
+				
+				String sql = "select time from post where id=?";
+				
+				ps = conn.prepareStatement(sql);
+				
+				ps.setString(1, time);;
+			
+				
+				rs=ps.executeQuery();
+				while(rs.next()){
+					if(i>0){
+						i = rs.getInt(i);
+					}
+				}
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				JDBCUtil.closeAll(conn, ps, rs);
+				
+			}
+			return i;
+			
+		}
+		
 		//计数
 		public int countPost(){
 			int i = 0;
@@ -220,6 +256,9 @@ public class UsersDao {
 			return i;
 			
 		}
+		
+		
+		
 		
 		//封装一个根据ID查询帖子
 		public List<Post> selectPost(int id){
