@@ -45,6 +45,14 @@
 	
 </head>
 
+<c:if test="${list==null }">
+
+<c:redirect url="DisplaySevrlet"/>
+
+</c:if>
+
+
+
 <body class="page-categories page-status-200 skin-flatly">
 	<nav id="menu" class="slideout-menu hidden">
 		<div class="menu-profile">
@@ -97,45 +105,36 @@
 
 </div>
 <hr>
-		<h1 class="categories-title">版块</h1>
+		<h1 class="categories-title">帖子列表</h1>
 		<ul class="categories" itemscope itemtype="http://www.schema.org/ItemList">
-			
-			<li component="categories/category" data-cid="7" data-numRecentReplies="1" class="row clearfix">
-	<meta itemprop="name" content="交易">
-
+		<c:forEach var="post" items="${list }" >
+		<!-- 循环遍历帖子 -->
+		
+		
+	
+		<li component="categories/category" data-cid="7" data-numRecentReplies="1" class="row clearfix">
 	<div class="content col-xs-12 col-md-7 col-sm-9" style="width:430px">
 		<div class="icon pull-left" style="background-color: #66ccff; color: #fff;">
-			
+			<!-- 显示头像 -->
 		</div>
-
 		<h2 class="title">
-			
-
 <a href="" itemprop="url">
-
-自编辑
+<!-- 显示标题 -->
+${post.title }
 </a>
-
 		</h2>
 		<div>
-			
 			<div class="description">
 				<div style="background-color: #f3f6f6;width:80px;height:25px;padding-left: 3px;padding-top: 4px; float: left;padding-left:9px"><a href="" style="opacity:1">关键字搜索</a></div>
                <div style="float: left;padding-top: 4px;padding-left: 11px;">
-                <span>发表时间</span>&nbsp&nbsp&nbsp&nbsp
-                <a href="">用户名</a>
+                <span>${post.time }</span>&nbsp&nbsp&nbsp&nbsp
+                <a href="">${post.username }</a>
                 </div>
 			</div>
 			
 			
 		</div>
-		<span class="visible-xs pull-right">
-			
-			<a class="permalink" href="/post/2491">
-				<small class="timeago" title="2019-06-13T09:43:14.108Z"></small>
-			</a>
-			
-		</span>
+
 	</div>
 
 	<div class="col-md-1 hidden-sm hidden-xs stats">
@@ -178,12 +177,8 @@
 </div>
 
 	</div>
-	
-	
-	
-	
-	
 </li>
+	</c:forEach>
 	</div>
 	
 	
@@ -199,27 +194,15 @@
 		<li class="previous pull-left disabled">
 			<a href="?page=1" data-page="1"><i class="fa fa-chevron-left"></i> </a>
 		</li>
-
-		
-			
 			<li class="page active">
 				<a href="?page=1" data-page="1">1</a>
 			</li>
-			
-		
-			
 			<li class="page">
 				<a href="?page=2" data-page="2">2</a>
 			</li>
-			
-		
-			
 			<li class="page">
 				<a href="?page=3" data-page="3">3</a>
 			</li>
-			
-		
-			
 			<li class="page">
 				<a href="?page=4" data-page="4">4</a>
 			</li>

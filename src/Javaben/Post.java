@@ -1,6 +1,7 @@
 package Javaben;
 
 public class Post {
+	private int id;
 	private String title;
 	private String username;
 	private String time;
@@ -10,14 +11,21 @@ public class Post {
 	public Post() {
 		super();
 	}
-	public Post(String title, String username, String time, String mine, String scan, String block) {
+	public Post(int id, String title, String username, String time, String mine, String scan, String block) {
 		super();
+		this.id = id;
 		this.title = title;
 		this.username = username;
 		this.time = time;
 		this.mine = mine;
 		this.scan = scan;
 		this.block = block;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
 	}
 	public String getTitle() {
 		return title;
@@ -57,9 +65,10 @@ public class Post {
 	}
 	@Override
 	public String toString() {
-		return "Post [title=" + title + ", username=" + username + ", time=" + time + ", mine=" + mine + ", scan="
-				+ scan + ", block=" + block + "]";
+		return "Post [id=" + id + ", title=" + title + ", username=" + username + ", time=" + time + ", mine=" + mine
+				+ ", scan=" + scan + ", block=" + block + "]";
 	}
+	
 	
 	
 	

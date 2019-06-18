@@ -81,7 +81,7 @@ public class DisplaySevrlet extends HttpServlet {
 				request.setAttribute("maxPage", maxPage);
 				
 				//跳转到显示页面
-				request.getRequestDispatcher("showEmpPaging.jsp").forward(request, response);
+				request.getRequestDispatcher("index.jsp").forward(request, response);
 	    
 	    
 	}
