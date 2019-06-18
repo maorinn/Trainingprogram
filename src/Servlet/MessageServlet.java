@@ -26,15 +26,14 @@ public class MessageServlet extends HttpServlet {
 		
 		
 		Date date = new Date();
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日 HH:mm:ss");
-		String dateString = sdf.format(date);
+		SimpleDateFormat time = new SimpleDateFormat("yyyy年MM月dd日 HH:mm:ss");
+		String dateString = time.format(date);
 		System.out.println(dateString);
 		
 		String userid = request.getParameter("userid");
-		String time = request.getParameter("time");
 		String title = request.getParameter("title");
 		String mine = request.getParameter("mine");
-		post post = new post(title, userid, time, mine);
+		post post = new post(title, userid, dateString, mine);
 		postDao postDao = new postDao();
 		int insert = postDao.insert(post);
 		if (insert>0) {
