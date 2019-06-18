@@ -80,6 +80,7 @@
     <div class="row">
 
 	<div class="col-lg-9 col-sm-12">
+<<<<<<< HEAD
 	    <div style="height:45px;">
 	        <c:if test="${user!=null}" >
 	        window.onload=function function_name () {
@@ -97,6 +98,21 @@
     <form action="">
         <input type="button" id='input1' value="登入以发表" style="width:100px;height:45px;background-color:#1a242f;color:#fff;border-radius: 5px; " onclick="hpsb()" >
     </form>
+=======
+	<div style="height:45px;">
+	<!-- 没有登陆 -->
+	    <c:if test="${user==null}" >
+		<button  id='input1' value="登入以发表" style="width:100px;height:45px;background-color:#1a242f;color:#fff;border-radius: 5px; " ><a href="login.jsp">登陆以发表</a></button>
+	    </c:if>
+	<!-- 登陆了 -->
+	
+	<c:if test="${user!=null }">
+	<form action="">
+<input type="button" id='input1' value="新帖子" style="width:100px;height:45px;background-color:#1a242f;color:#fff;border-radius: 5px; " onclick="hpsb()" >
+</form>
+	</c:if>
+
+>>>>>>> e596a449611384bb8f7833cf71398ab7df7b7da1
 </div>
     <hr>
 		<h1 class="categories-title">版块</h1>
@@ -313,7 +329,7 @@
 				<button class="btn btn-sm btn-primary composer-submit" data-action="post" tabindex="-1"><i class="fa fa-chevron-right"></i></button>
 			</div>
 		</nav>
-		<form action="/test">
+		<form action="MessageServlet">
 		<div class="row title-container">
 			
 			<div>
@@ -350,7 +366,8 @@
 				</div>
 				<div class="pull-right draft-icon hidden-md hidden-lg"></div>
 				<!-- <textarea class="write" tabindex="4" dir="ltr"></textarea> -->
-				<input type="text" class="write" name="content">
+				<input type="text" class="write" name="mine">
+				<input type="text" name="userid" style="display:none" value="${user.username }">
 			</div>
 
 		</div>
