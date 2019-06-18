@@ -37,22 +37,26 @@
 				<ul id="logged-out-menu" class="nav navbar-nav navbar-right">
 					
 					<li>
-						<a href="/register">
+						<a href="register.jsp">
 							<i class="fa fa-pencil fa-fw hidden-sm hidden-md hidden-lg"></i>
+							
 							<span>注册</span>
 						</a>
 					</li>
 					
 					<li>
-						<a href="/login">
+						<a href="login.jsp">
 							<i class="fa fa-sign-in fa-fw hidden-sm hidden-md hidden-lg"></i>
 							<span>登录</span>
 						</a>
 					</li>
 				</ul>
+				<c:if test="${user!=null}" >
+	 
+	    
+	    </c:if>
 				
-				
-				<ul class="nav navbar-nav navbar-right">
+				<ul class="nav navbar-nav navbar-right" id='d1'>
 					<li data-original-title="" title="">
 						<form id="search-form" class="navbar-form navbar-right hidden-xs" role="search" method="GET">
 							<button id="search-button" type="button" class="btn btn-link"><i class="fa fa-search fa-fw" title="搜索"></i></button>
@@ -68,7 +72,7 @@
 							
 
 						</ul>
-					</li>
+					</li>  
 					<li class="visible-xs" id="search-menu">
 						<a href="/search">
 							<i class="fa fa-search fa-fw"></i> 搜索
