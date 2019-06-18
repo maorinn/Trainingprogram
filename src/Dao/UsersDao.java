@@ -31,7 +31,7 @@ public class UsersDao {
 				   rs=ps.executeQuery();
 				   if (rs.next()) {			  				
 					   Users = new Users();
-					   Users.setEmail(rs.getString("username"));
+					   Users.setUsername(rs.getString("username"));
 					   Users.setEmail(rs.getString("email"));
 					   Users.setPassword(rs.getString("password"));
 				}
