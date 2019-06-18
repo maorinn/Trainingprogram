@@ -63,7 +63,7 @@
 <div class="container" id="content">
 <div class="row"><div class="col-lg-9 col-xs-12"><ol class="breadcrumb">
 	<li itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb">
-		<a href="/" itemprop="url">
+		<a href="index.jsp" itemprop="url">
 			<span itemprop="title">
 				主页
 			</span>

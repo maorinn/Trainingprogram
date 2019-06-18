@@ -26,7 +26,7 @@
 	<link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="./assets/client-flatly.css" />
 	<link rel="stylesheet" href="./assets/styles.css" />
-	<link rel="stylesheet" href="./assets/page.css" />
+	
 
 	<script>
 		var RELATIVE_PATH = "";
@@ -37,7 +37,11 @@
 		};
 	</script>
 
-	
+	<style type="text/css">
+				#input1:hover{
+				
+				}
+			</style>
 	
 </head>
 
@@ -45,14 +49,12 @@
 	<nav id="menu" class="slideout-menu hidden">
 		<div class="menu-profile">
 	
-</div>
+        </div>
 
-<section class="menu-section" data-section="navigation">
-	<h3 class="menu-section-title">导航</h3>
-	<ul class="menu-section-list"></ul>
-</section>
-
-
+    <section class="menu-section" data-section="navigation">
+	    <h3 class="menu-section-title">导航</h3>
+	    <ul class="menu-section-list"></ul>
+    </section>
 	</nav>
 	<nav id="chats-menu" class="slideout-menu hidden">
 		
@@ -72,40 +74,120 @@
 		</div>
 	</noscript>
 
-<div widget-area="header">
+    <div widget-area="header">
 	
-</div>
-<div class="row">
+    </div>
+    <div class="row">
+
 	<div class="col-lg-9 col-sm-12">
-	     <div class="categories-title">
-           <a href="index.jsp" style="color:#18bc9c; text-decoration: none; font-size: 17px;">主页 / </a>
-           <a href="#" style="color:#C9E0E0; text-decoration: none; font-size: 17px;">登录</a>
-        </div>
-        <div class="login">
-		    <form class="form-01" action="LoginServlet.action"method="post">
-                <span class="form-user01"><b class="form-pwb-b1">用户名/邮箱      </b><input class="form-user02" style='font-size:15px;;'type="text" name="username"placeholder="用户名/邮箱"></span>
-                <span class="form-pwd01"><b class="form-pwb-b2">密码      </b><input class="form-pwd02" style='font-size:16px;'type="password" name="password"placeholder="密码"></span>
-                <span class="form-che01"><input type="checkbox" id="submit" value="记住我？">记住我？</span>
-                <input class="form-sub" type="submit"  style='font-size:20px;color: white;' id="submit" value="登录">
-            </form>
-		    <div class="ree01">
-               <a href="#" style="color: #111; text-decoration: none; font-size: 16px;">没有账号？</a>
-               <a href="#" style="color: #18bc9c; text-decoration: none; font-size: 16px;">注册</a>
-               <a href="#" style="color: #18bc9c; text-decoration: none; font-size: 16px;">忘记密码？</a>
-            </div>
-		</div>
-	<meta itemprop="name" content="交易">
-
-
+<<<<<<< HEAD
+	    <div style="height:45px;">
+	        <c:if test="${user!=null}" >
+	        window.onload=function function_name () {
+ 	        var b=document.getElementById('input1')b.value="新主题"; 
+ 	
+             }function_name();
+	    
+	       </c:if>
+	       <script type="text/javascript">
+	 
+	       </script>
 	
- 	<div class="col-md-3 col-sm-3 teaser hidden-xs" component="topic/teaser" style="width:140px">
-		<div class="card"  style="border-color: #66ccff" id="card">
+	    
 	
+    <form action="">
+        <input type="button" id='input1' value="登入以发表" style="width:100px;height:45px;background-color:#1a242f;color:#fff;border-radius: 5px; " onclick="hpsb()" >
+    </form>
+=======
+	<div style="height:45px;">
+	<!-- 没有登陆 -->
+	    <c:if test="${user==null}" >
+		<button  id='input1' value="登入以发表" style="width:100px;height:45px;background-color:#1a242f;color:#fff;border-radius: 5px; " ><a href="login.jsp">登陆以发表</a></button>
+	    </c:if>
+	<!-- 登陆了 -->
+	
+	<c:if test="${user!=null }">
+	<form action="">
+<input type="button" id='input1' value="新帖子" style="width:100px;height:45px;background-color:#1a242f;color:#fff;border-radius: 5px; " onclick="hpsb()" >
+</form>
+	</c:if>
 
-	
+>>>>>>> e596a449611384bb8f7833cf71398ab7df7b7da1
 </div>
+    <hr>
+		<h1 class="categories-title">版块</h1>
+		<ul class="categories" itemscope itemtype="http://www.schema.org/ItemList">
+		<li component="categories/category" data-cid="7" data-numRecentReplies="1" class="row clearfix">
+	    <meta itemprop="name" content="交易">
 
+	    <div class="content col-xs-12 col-md-7 col-sm-9" style="width:430px">
+		<div class="icon pull-left" style="background-color: #66ccff; color: #fff;">
+			
+		</div>
+
+		<h2 class="title">
+			
+
+<a href="" itemprop="url">${list.title }自编辑</a>
+
+		</h2>
+		<div>
+			
+			<div class="description">
+			    <div style="background-color: #f3f6f6;width:80px;height:25px;padding-left: 3px;padding-top: 4px; float: left;padding-left:9px"><a href="" style="opacity:1">${list.mine }关键字搜索</a></div>
+                <div style="float: left;padding-top: 4px;padding-left: 11px;">
+                    <span>${list.time }发表时间</span>&nbsp&nbsp&nbsp&nbsp
+                    <a href="#">${list.name }用户名</a>
+                </div>
+			</div>
+		</div>
+		<span class="visible-xs pull-right">
+			<a class="permalink" href="/post/2491">
+				<small class="timeago" title="2019-06-13T09:43:14.108Z"></small>
+			</a>
+		</span>
 	</div>
+
+	<div class="col-md-1 hidden-sm hidden-xs stats">
+		<span class="unread human-readable-number" title="709">0</span><br />
+		<small>赞同</small>
+	</div>
+	<div class="col-md-1 hidden-sm hidden-xs stats">
+		<span class="unread human-readable-number" title="709">7</span><br />
+		<small>帖子</small>
+	</div>
+	<div class="col-md-1 hidden-sm hidden-xs stats">
+		<span class="unread human-readable-number" title="1941">1941</span><br />
+		<small>浏览</small>
+	</div>
+	
+	<div class="col-md-3 col-sm-3 teaser hidden-xs" component="topic/teaser" style="width:140px">
+	<div class="card"  style="border-color: #66ccff" id="card">
+	
+	
+	<div component="category/posts">
+		<p>
+			<a href="/user/methol">
+				
+				<img class="user-img" title="methol" alt="methol" src="https://www.gravatar.com/avatar/84212707f5fa0d3884b8a025c4ec0ecb?size=192&d=monsterid">
+				
+			</a>
+			<a class="permalink" href="/topic/864/post/2">
+				<small class="timeago" title="2019-06-13T09:43:14.108Z"></small>
+			</a>
+		</p>
+		<div class="post-content">
+			这不是1TB？
+
+		</div>
+	</div>
+	
+	
+
+	
+    </div>
+
+</div>
 	
 	
 </li>
@@ -224,6 +306,94 @@
 
 	<div class="hide">
 	</div>
+	
+	
+	
+
+	
+	<div component="composer" class="composer resizable" data-uuid="d75c9974-c60b-4512-a3f5-5ab2efb9cdbc" style="top:72.6124%;" id='i'>
+
+	<div class="composer-container">
+		<nav class="navbar navbar-fixed-top mobile-navbar hidden-md hidden-lg">
+			<div class="btn-group">
+				<button class="btn btn-sm btn-primary composer-discard" data-action="discard" tabindex="-1"><i class="fa fa-times"></i></button>
+				<button class="btn btn-sm btn-primary composer-minimize" data-action="minimize" tabindex="-1"><i class="fa fa-minus"></i></button>
+			</div>
+			
+			<div class="category-name-container">
+				<span class="category-name">交易</span> <i class="fa fa-sort"></i>
+			</div>
+			
+			
+			<div class="btn-group">
+				<button class="btn btn-sm btn-primary composer-submit" data-action="post" tabindex="-1"><i class="fa fa-chevron-right"></i></button>
+			</div>
+		</nav>
+		<form action="MessageServlet">
+		<div class="row title-container">
+			
+			<div>
+				
+				<input class="title form-control" type="text" tabindex="1" name="title" placeholder="在此输入您主题的标题..." value="">
+				
+				<ul class="dropdown-menu quick-search-results hidden">
+					
+
+				</ul>
+			</div>
+
+			
+			<div class="category-list-container hidden-sm hidden-xs"><div component="category-selector" class="btn-group pull-right dropup">
+	
+	<div component="category-selector-search" class="hidden">
+		<input type="text" class="form-control" autocomplete="off">
+	</div>
+	
+</div></div>
+			
+
+			<div class="pull-right draft-icon"></div>
+
+			
+		</div>
+
+
+
+		<div class="row write-preview-container">
+			<div class="write-container">
+				<div class="help-text">
+					<span class="help">编写帮助 <i class="fa fa-question-circle"></i></span>
+				</div>
+				<div class="pull-right draft-icon hidden-md hidden-lg"></div>
+				<!-- <textarea class="write" tabindex="4" dir="ltr"></textarea> -->
+				<input type="text" class="write" name="mine">
+				<input type="text" name="userid" style="display:none" value="${user.username }">
+			</div>
+
+		</div>
+
+		<div class="btn-group pull-right action-bar hidden-sm hidden-xs">
+				<button class="btn btn-default composer-discard" data-action="discard" tabindex="-1"><i class="fa fa-times"></i> 撤销</button>
+
+				<button type="submit" class="btn btn-primary composer-submit" data-action="post" tabindex="6"><i class="fa fa-check"></i> 提交</button>
+			</form>
+			</div>
+		<div class="tag-row">
+			<div class="tags-container">
+				<div class="btn-group dropup hidden" component="composer/tag/dropdown">
+					<button class="btn btn-default dropdown-toggle" data-toggle="dropdown" type="button">
+						<span class="visible-sm-inline visible-md-inline visible-lg-inline"><i class="fa fa-tags"></i></span>
+						<span class="caret"></span>
+					</button>
+				</div>
+				
+		</div>
+	</div>
+</div>
+	
+	
+	
+	
 	<script type="text/javascript">
 	function rgb () {
 	 	var a=parseInt(Math.random()*255);
@@ -234,13 +404,19 @@
 	 function function_name () {
 		 
 	 	 var d=document.getElementById('card'); 
-	 	
-	 	 
+	 	var i=document.getElementById('i');
+	 	i.style.visibility="hidden";
 	    d.style.borderColor=rgb();
 	 	/*d.style.backgroundColor=rgb();
 	 	d.style.color=rgb();*/
 	 	
 	 }
+	 function hpsb (){
+		var i=document.getElementById('i');
+		i.style.visibility="visible";
+		
+	 }
+	 
 	function_name();
 			</script>
 </body>
