@@ -331,6 +331,7 @@ ${post.title }
 				<div class="pull-right draft-icon hidden-md hidden-lg"></div>
 				<!-- <textarea class="write" tabindex="4" dir="ltr"></textarea> -->
 				<input type="text" class="write" name="mine">
+				
 				<input type="text" name="userid" style="display:none" value="${user.username }">
 			</div>
 
@@ -383,5 +384,7 @@ ${post.title }
 	 
 	function_name();
 			</script>
+			
+			
 </body>
 </html>
