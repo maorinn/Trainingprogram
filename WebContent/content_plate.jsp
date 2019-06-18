@@ -319,7 +319,7 @@
 				<button class="btn btn-sm btn-primary composer-submit" data-action="post" tabindex="-1"><i class="fa fa-chevron-right"></i></button>
 			</div>
 		</nav>
-		<form action="/test">
+		<form action="MessageServlet">
 		<div class="row title-container">
 			
 			<div>
@@ -356,7 +356,8 @@
 				</div>
 				<div class="pull-right draft-icon hidden-md hidden-lg"></div>
 				<!-- <textarea class="write" tabindex="4" dir="ltr"></textarea> -->
-				<input type="text" class="write" name="content">
+				<input type="text" class="write" name="mine">
+				<input type="text" name="userid" style="display:none" value="${user.username }">
 			</div>
 
 		</div>
