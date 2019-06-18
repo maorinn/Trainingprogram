@@ -91,7 +91,7 @@
 		<h2 class="title">
 			
 
-<a href="/category/7/交易" itemprop="url">
+<a href="content_plate.jsp?id=1" itemprop="url">
 
 交易
 </a>
@@ -168,7 +168,7 @@
 		<h2 class="title">
 			
 
-<a href="/category/22/post" itemprop="url">
+<a href="content_plate.jsp?id=2" itemprop="url">
 
 教程及信息
 </a>
@@ -281,7 +281,7 @@ Github地址：https://github.com/eqblog/
 		<h2 class="title">
 			
 
-<a href="/category/16/post" itemprop="url">
+<a href="content_plate.jsp?id=3" itemprop="url">
 
 主机测评及优惠
 </a>
@@ -358,7 +358,7 @@ Github地址：https://github.com/eqblog/
 		<h2 class="title">
 			
 
-<a href="/category/23/post" itemprop="url">
+<a href="content_plate.jsp?id=4" itemprop="url">
 
 商家 Offer
 </a>

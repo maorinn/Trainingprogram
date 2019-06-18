@@ -1,6 +1,8 @@
 package Servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
@@ -36,14 +38,23 @@ public class LoginServlet extends HttpServlet {
 			//保存到session作用域
 			HttpSession session = request.getSession();
 			session.setAttribute("user", user);
-			
+			PrintWriter writer = response.getWriter();
+			writer.print("发帖成功");
 			//登录成功的页面url
+<<<<<<< HEAD
+=======
+			
+			request.getRequestDispatcher("---.html").forward(request, response);
+		}else{
+            //如果错误就跳转到登陆页面
+			//密码或用户名错误从新登录
+			response.sendRedirect("login.jsp");
+>>>>>>> dc50823613920b4c998f288e93f09303c7090e74
 			response.sendRedirect("index.jsp");
 		}else{
             //如果错误就跳转到登陆页面
 			//密码或用户名错误从新登录
-			System.out.println("登入失败");
-			response.sendRedirect("---.jsp");
+			response.sendRedirect("login.jsp");
 		}
 	}
 
