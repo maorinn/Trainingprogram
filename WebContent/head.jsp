@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,7 +22,7 @@
 
 				
 				
-				<a href="https://bbs.liyuans.com/">
+				<a href="http://localhost:8080/forum/">
 					<h1 class="navbar-brand forum-title">梨园</h1>
 				</a>
 				
@@ -37,18 +38,92 @@
 				<ul id="logged-out-menu" class="nav navbar-nav navbar-right">
 					
 					<li>
+						<!-- 如果没有登陆 -->
+						<c:if test="${user==null }">
 						<a href="register.jsp">
 							<i class="fa fa-pencil fa-fw hidden-sm hidden-md hidden-lg"></i>
-							
 							<span>注册</span>
 						</a>
+						</c:if>
+						<!-- 如果登陆了 -->
+						<c:if test="${user!=null }">
+						<a href="#">
+							<i component="notifications/icon" class="fa fa-fw fa-bell-o unread-count" data-content="0"></i>
+						</a>
+						</c:if>
 					</li>
 					
 					<li>
+					<!-- 如果没有登陆 -->
+					<c:if test="${user==null }">
 						<a href="login.jsp">
 							<i class="fa fa-sign-in fa-fw hidden-sm hidden-md hidden-lg"></i>
 							<span>登录</span>
 						</a>
+					</c:if>
+					<!-- 如果登陆了 -->
+					<c:if test="${user!=null }">
+					
+					<li id="user_label" class="dropdown">
+						<label for="user-control-list-check" class="dropdown-toggle" data-toggle="dropdown" id="user_dropdown" title="" role="button" data-original-title="设置">
+							
+							<img component="header/userpicture" src="https://www.gravatar.com/avatar/819c14ad15c6fdfccd15afe16b1b20d8?size=192&amp;d=monsterid" alt="maoring">
+							
+							<span id="user-header-name" class="visible-xs-inline">maoring</span>
+						</label>
+						<input type="checkbox" class="hidden" id="user-control-list-check" aria-hidden="true">
+						<ul id="user-control-list" component="header/usercontrol" class="dropdown-menu" aria-labelledby="user_dropdown">
+							<li>
+								<a component="header/profilelink" href="/user/maoring">
+									<i component="user/status" class="fa fa-fw fa-circle status away"></i> <span component="header/username">maoring</span>
+								</a>
+							</li>
+							<li role="presentation" class="divider"></li>
+							<li>
+								<a href="#" class="user-status" data-status="online">
+									<i class="fa fa-fw fa-circle status online"></i><span> 在线</span>
+								</a>
+							</li>
+							<li>
+								<a href="#" class="user-status" data-status="away">
+									<i class="fa fa-fw fa-circle status away"></i><span class="bold"> 离开</span>
+								</a>
+							</li>
+							<li>
+								<a href="#" class="user-status" data-status="dnd">
+									<i class="fa fa-fw fa-circle status dnd"></i><span> 请勿打扰</span>
+								</a>
+							</li>
+							<li>
+								<a href="#" class="user-status" data-status="offline">
+									<i class="fa fa-fw fa-circle status offline"></i><span> 隐身</span>
+								</a>
+							</li>
+							<li role="presentation" class="divider"></li>
+							<li>
+								<a component="header/profilelink/edit" href="/user/maoring/edit">
+									<i class="fa fa-fw fa-edit"></i> <span>编辑资料</span>
+								</a>
+							</li>
+							<li>
+								<a component="header/profilelink/settings" href="/user/maoring/settings">
+									<i class="fa fa-fw fa-gear"></i> <span>设置</span>
+								</a>
+							</li>
+							
+							<li role="presentation" class="divider"></li>
+							<li component="user/logout">
+								<form method="post" action="/logout">
+									<input type="hidden" name="_csrf" value="TKbDHRWC-K3ZoWC5mMOeGUafciSBtP7r6DbI">
+									<input type="hidden" name="noscript" value="true">
+									<button type="submit" class="btn btn-link">
+										<i class="fa fa-fw fa-sign-out"></i><span> 退出</span>
+									</button>
+								</form>
+							</li>
+						</ul>
+					</li>
+					</c:if>
 					</li>
 				</ul>
 				<c:if test="${user!=null}" >

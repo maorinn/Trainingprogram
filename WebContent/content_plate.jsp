@@ -83,28 +83,18 @@
 
 	<div class="col-lg-9 col-sm-12">
 	<div style="height:45px;">
-	
-	    <c:if test="${user!=null}" >
-	   window.onload=function function_name () {
- 
- 	  var b=document.getElementById('input1') 
-
- 	
-  b.value="新主题"; 
- 	
- }
-function_name();
-	    
+	<!-- 没有登陆 -->
+	    <c:if test="${user==null}" >
+		<button  id='input1' value="登入以发表" style="width:100px;height:45px;background-color:#1a242f;color:#fff;border-radius: 5px; " ><a href="login.jsp">登陆以发表</a></button>
 	    </c:if>
-	 <script type="text/javascript">
-	 
-			</script>
+	<!-- 登陆了 -->
 	
-	    
-	
-<form action="">
-<input type="button" id='input1' value="登入以发表" style="width:100px;height:45px;background-color:#1a242f;color:#fff;border-radius: 5px; " onclick="hpsb()" >
+	<c:if test="${user!=null }">
+	<form action="">
+<input type="button" id='input1' value="新帖子" style="width:100px;height:45px;background-color:#1a242f;color:#fff;border-radius: 5px; " onclick="hpsb()" >
 </form>
+	</c:if>
+
 </div>
 <hr>
 		<h1 class="categories-title">版块</h1>
