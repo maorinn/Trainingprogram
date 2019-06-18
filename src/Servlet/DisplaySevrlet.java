@@ -19,9 +19,9 @@ public class DisplaySevrlet extends HttpServlet {
 	    //分页查询
 	  	//页面会传有一个页码page
 	  	//定义一个初始的页面显示行数
-	  	int pageSize = 15;
+	  	int pageSize = 5;
 	  	//获取页数
-	    String page = request.getParameter("---");
+	    String page = request.getParameter("page");
 	    //获取用户传的ID=？？？
 	    String id = request.getParameter("---");
 	    
@@ -75,13 +75,12 @@ public class DisplaySevrlet extends HttpServlet {
 					
 					request.setAttribute("page", Integer.parseInt(page));
 					request.setAttribute("list", list);
-					
 				}
 				//将总页数也存入请求作用域中
 				request.setAttribute("maxPage", maxPage);
 				
 				//跳转到显示页面
-				request.getRequestDispatcher("index.jsp").forward(request, response);
+				request.getRequestDispatcher("testpag.jsp").forward(request, response);
 	    
 	    
 	}

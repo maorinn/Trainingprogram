@@ -170,81 +170,44 @@ ${post.title }
 
 		</div>
 	</div>
-	
-	
-
-	
 </div>
-
 	</div>
 </li>
 	</c:forEach>
 	</div>
 	
-	
-	
-	
-	
-	
-	
-	
-	
 	<div component="pagination" class="text-center pagination-container">
 	<ul class="pagination hidden-xs">
-		<li class="previous pull-left disabled">
-			<a href="?page=1" data-page="1"><i class="fa fa-chevron-left"></i> </a>
-		</li>
-			<li class="page active">
-				<a href="?page=1" data-page="1">1</a>
-			</li>
-			<li class="page">
-				<a href="?page=2" data-page="2">2</a>
-			</li>
-			<li class="page">
-				<a href="?page=3" data-page="3">3</a>
-			</li>
-			<li class="page">
-				<a href="?page=4" data-page="4">4</a>
-			</li>
+	    <c:if test="${page-1>=1 }">
+	        <!-- <li class="previous pull-left disabled"> -->
+	        <li class="previous pull-left">
+			    <a href="DisplaySevrlet?page=${page-1 }" data-page="1"><i class="fa fa-chevron-left"></i> </a>
+		    </li> 
+		</c:if>
 			
+			<c:forEach var="i" begin="1" end="${maxPage }">
+			<li class="page">
+				<a href="DisplaySevrlet?page=${i }" data-page="10">${i }</a>
+			</li>
+			</c:forEach>
+			
+			
+         <c:if test="${page+1<=maxPage}">
+			<li class="next pull-right">
+			<a href="DisplaySevrlet?page=${page+1 }" data-page="2"> <i class="fa fa-chevron-right"></i></a>
+		    </li>
+		</c:if>
 		
-			
-			<li class="page">
-				<a href="?page=5" data-page="5">5</a>
-			</li>
-			
-		
-			
-			<li component="pagination/select-page" class="page select-page">
-				<a href="#"><i class="fa fa-ellipsis-h"></i></a>
-			</li>
-			
-		
-			
-			<li class="page">
-				<a href="?page=9" data-page="9">9</a>
-			</li>
-			
-		
-			
-			<li class="page">
-				<a href="?page=10" data-page="10">10</a>
-			</li>
-			
-		
-
-		<li class="next pull-right">
-			<a href="?page=2" data-page="2"> <i class="fa fa-chevron-right"></i></a>
-		</li>
 	</ul>
 
-	<ul class="pagination hidden-sm hidden-md hidden-lg">
+
+	    <ul class="pagination hidden-sm hidden-md hidden-lg">
 		<li class="first disabled">
-			<a href="?page=1" data-page="1"><i class="fa fa-fast-backward"></i> </a>
+			<a href="DisplaySevrlet?page=1" data-page="1"><i class="fa fa-fast-backward"></i> </a>
 		</li>
 
 		<li class="previous disabled">
-			<a href="?page=1" data-page="1"><i class="fa fa-chevron-left"></i> </a>
+			<a href="DisplaySevrlet?page=1" data-page="1"><i class="fa fa-chevron-left"></i> </a>
 		</li>
 
 		<li component="pagination/select-page" class="page select-page">
@@ -252,11 +215,11 @@ ${post.title }
 		</li>
 
 		<li class="next">
-			<a href="?page=2" data-page="2"> <i class="fa fa-chevron-right"></i></a>
+			<a href="DisplaySevrlet?page=2" data-page="2"> <i class="fa fa-chevron-right"></i></a>
 		</li>
 
 		<li class="last">
-			<a href="?page=10" data-page="10"><i class="fa fa-fast-forward"></i> </a>
+			<a href="DisplaySevrlet?page=10" data-page="10"><i class="fa fa-fast-forward"></i> </a>
 		</li>
 	</ul>
 </div>
@@ -264,10 +227,6 @@ ${post.title }
 
 
 	<script defer src="/assets/nodebb.min.js?v=dbfsljii2ss"></script>
-
-	
-	
-
 	<div class="hide">
 	</div>
 	
