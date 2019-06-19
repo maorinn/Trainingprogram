@@ -118,7 +118,7 @@
 			<!-- 显示头像 -->
 		</div>
 		<h2 class="title">
-<a href="" itemprop="url">
+<a href="PostMine?postid=${post.id }" itemprop="url">
 <!-- 显示标题 -->
 ${post.title }
 </a>

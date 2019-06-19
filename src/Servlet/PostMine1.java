@@ -33,7 +33,7 @@ public class PostMine1 extends HttpServlet {
 		
 		if(list!=null){
 			HttpSession session = request.getSession();
-		
+			System.out.println(list);
 			request.setAttribute("Post", list);
 			request.getRequestDispatcher("Postct.jsp").forward(request, response);
 			
