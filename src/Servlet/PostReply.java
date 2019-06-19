@@ -26,7 +26,7 @@ public class PostReply extends HttpServlet {
 				request.setCharacterEncoding("utf-8");				
 				
 				Date date = new Date();
-				SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日 HH:mm:ss");
+				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd-HH:mm:ss");
 				String time = sdf.format(date);
 				String postid = request.getParameter("postid");
 				String username = request.getParameter("username");
@@ -35,9 +35,9 @@ public class PostReply extends HttpServlet {
 				PostReplyDao dao = new PostReplyDao();
 				boolean insert = dao.seleckPostReply(reply);
 				if (insert) {
-					System.out.println("回帖成功");
+					request.getRequestDispatcher("retrievalSevrlet?postid="+postid).forward(request, response);
 				}else {
-					System.out.println("回帖失败");
+					response.getWriter().println("未知错误");
 				}
 	}
 

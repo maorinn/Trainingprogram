@@ -275,15 +275,15 @@
 
 	</small>
 </div>
-				</c:forEach>
+				
 					
 <br>
 
 <div class="content" component="post/content" itemprop="text">
-	<p>${huifu.content }</p>
+	${huifu.content }
 
 </div>
-
+</c:forEach>
 <div class="clearfix post-footer">
 	
 
@@ -427,11 +427,11 @@
 			
 		</a>
 	</div>
-	<form method="post" action="/compose">
-		<input type="hidden" name="tid" value="957">
-		<input type="hidden" name="_csrf" value="h22y9GDg-ucLxN-nVTXQCyBgI4zFOfHwyjJU">
+	<form method="post" action="PostReply">
+		<input type="hidden" name="postid" value="${Post.id }">
+		<input type="hidden" name="username" value="${Post.username }">
 		<div class="quickreply-message">
-			<textarea name="content" component="topic/quickreply/text" class="form-control" rows="5" dir="ltr"></textarea>
+			<input name="content" component="topic/quickreply/text" class="form-control" rows="5" dir="ltr"></input>
 		</div>
 		<button type="submit" component="topic/quickreply/button" class="btn btn-primary pull-right">回复</button>
 	</form>

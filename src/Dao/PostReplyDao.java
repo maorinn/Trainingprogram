@@ -23,6 +23,9 @@ public class PostReplyDao {
 			ps= conn.prepareStatement(sql);
 			int postid = Integer.parseInt(i.getPostid());
 			ps.setInt(1, postid);
+			ps.setString(2, i.getUsername());
+			ps.setString(3, i.getContent());
+			ps.setString(4, i.getTime());
 			int cc =ps.executeUpdate();
 			if (cc>0) {
 				mine = true;
