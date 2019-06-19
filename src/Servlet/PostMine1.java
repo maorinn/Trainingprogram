@@ -35,7 +35,7 @@ public class PostMine1 extends HttpServlet {
 			HttpSession session = request.getSession();
 			System.out.println(list);
 			request.setAttribute("Post", list);
-			request.getRequestDispatcher("Postct.jsp").forward(request, response);
+			request.getRequestDispatcher("retrievalSevrlet?postid="+postid).forward(request, response);
 			
 		}else{
 			response.getWriter().println("Î´Öª´íÎó");

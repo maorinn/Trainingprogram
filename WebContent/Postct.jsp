@@ -129,6 +129,9 @@
 					<meta itemprop="datePublished" content="2019-06-19T02:14:36.645Z">
 					<meta itemprop="dateModified" content="">
 
+
+
+
 					<div class="clearfix post-header">
 	<div class="icon pull-left">
 		<a href="/user/easin">
@@ -233,8 +236,9 @@
 
 					<meta itemprop="datePublished" content="2019-06-19T02:20:40.267Z">
 					<meta itemprop="dateModified" content="">
-
-					<div class="clearfix post-header">
+					<!-- 遍历回复内容 -->
+				<c:forEach var="huifu" items="${hflist }">
+				<div class="clearfix post-header">
 	<div class="icon pull-left">
 		<a href="/user/cody">
 			
@@ -247,7 +251,7 @@
 
 	<small class="pull-left">
 		<strong>
-			<a href="/user/cody" itemprop="author" data-username="Cody" data-uid="254">Cody</a>
+			<a href="/user/cody" itemprop="author" data-username="Cody" data-uid="254">${huifu.username }</a>
 		</strong>
 
 		
@@ -255,7 +259,7 @@
 		
 
 		<span class="visible-xs-inline-block visible-sm-inline-block visible-md-inline-block visible-lg-inline-block">
-			<a class="permalink" href="/post/2738"><span class="timeago" title="2019年6月19日 上午10:20" datetime="2019-06-19T02:20:40.267Z">31分钟之前</span></a>
+			<a class="permalink" href="/post/2738"><span class="timeago" title="${huifu.time }" datetime="${huifu.time }">${huifu.time }</span></a>
 
 			<i component="post/edit-indicator" class="fa fa-pencil-square edit-icon hidden"></i>
 
@@ -271,11 +275,12 @@
 
 	</small>
 </div>
-
+				</c:forEach>
+					
 <br>
 
 <div class="content" component="post/content" itemprop="text">
-	<p>兄die  你的高价回收就是原价收吗</p>
+	<p>${huifu.content }</p>
 
 </div>
 
