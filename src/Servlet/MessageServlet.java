@@ -39,10 +39,9 @@ public class MessageServlet extends HttpServlet {
 		postDao postDao = new postDao();
 		int insert = postDao.insert(post);
 		if (insert>0) {
-			System.out.println("发帖成功");
-			response.sendRedirect("index.jsp");
+			response.sendRedirect("DisplaySevrlet");
 		}else {
-			System.out.println("发帖失败");
+			response.getWriter().println("未知错误");
 		}
 		
 		

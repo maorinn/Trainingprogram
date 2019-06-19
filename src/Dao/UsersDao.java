@@ -201,7 +201,7 @@ public class UsersDao {
 			try {
 				conn = JDBCUtil.getConn();
 				
-				String sql = "select time from post where id=?";
+				String sql = "select time from post where postid=?";
 				
 				ps = conn.prepareStatement(sql);
 				

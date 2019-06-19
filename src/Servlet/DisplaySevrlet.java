@@ -1,6 +1,7 @@
 package Servlet;
 
 import java.io.IOException;
+import java.util.Collections;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -62,7 +63,8 @@ public class DisplaySevrlet extends HttpServlet {
 				Post post = new Post();
 				if(page==null){
 					//执行查询结果 
-					List<Post> list = dao.selectPost(0, pageSize);
+					List<Post> list = dao.selectPost(countEmp-pageSize, pageSize);
+					Collections.reverse(list);
 					request.setAttribute("page", 1);
 					request.setAttribute("list", list);
 					
@@ -70,17 +72,24 @@ public class DisplaySevrlet extends HttpServlet {
 					//已经查询过并展示完，用户又在页面选中一个页码传过来
 					//执行查询结果
 					//公式：页数-1乘以行数
-					List<Post> list = dao.selectPost((Integer.parseInt(page)-1)*pageSize, pageSize);
+					int cc;//起始行数
+					if (countEmp - (Integer.parseInt(page))*pageSize<0) {
+						cc = 0;
+					}else {
+						cc = countEmp - (Integer.parseInt(page))*pageSize;
+					}
+					List<Post> list = dao.selectPost(cc, pageSize);
 					
 					
 					request.setAttribute("page", Integer.parseInt(page));
+					Collections.reverse(list);
 					request.setAttribute("list", list);
 				}
 				//将总页数也存入请求作用域中
 				request.setAttribute("maxPage", maxPage);
 				
 				//跳转到显示页面
-				request.getRequestDispatcher("testpag.jsp").forward(request, response);
+				request.getRequestDispatcher("index.jsp").forward(request, response);
 	    
 	    
 	}

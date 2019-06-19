@@ -200,28 +200,6 @@ ${post.title }
 		
 	</ul>
 
-
-	    <ul class="pagination hidden-sm hidden-md hidden-lg">
-		<li class="first disabled">
-			<a href="DisplaySevrlet?page=1" data-page="1"><i class="fa fa-fast-backward"></i> </a>
-		</li>
-
-		<li class="previous disabled">
-			<a href="DisplaySevrlet?page=1" data-page="1"><i class="fa fa-chevron-left"></i> </a>
-		</li>
-
-		<li component="pagination/select-page" class="page select-page">
-			<a href="#">1 / 10</a>
-		</li>
-
-		<li class="next">
-			<a href="DisplaySevrlet?page=2" data-page="2"> <i class="fa fa-chevron-right"></i></a>
-		</li>
-
-		<li class="last">
-			<a href="DisplaySevrlet?page=10" data-page="10"><i class="fa fa-fast-forward"></i> </a>
-		</li>
-	</ul>
 </div>
 	
 
@@ -252,7 +230,7 @@ ${post.title }
 				<button class="btn btn-sm btn-primary composer-submit" data-action="post" tabindex="-1"><i class="fa fa-chevron-right"></i></button>
 			</div>
 		</nav>
-		<form action="MessageServlet">
+		<form action="MessageServlet" method="post">
 		<div class="row title-container">
 			
 			<div>
@@ -299,7 +277,7 @@ ${post.title }
 		<div class="btn-group pull-right action-bar hidden-sm hidden-xs">
 				<button class="btn btn-default composer-discard" data-action="discard" tabindex="-1"><i class="fa fa-times"></i> 撤销</button>
 
-				<button type="submit" class="btn btn-primary composer-submit" data-action="post" tabindex="6"><i class="fa fa-check"></i> 提交</button>
+				<button type="submit" class="btn btn-primary composer-submit" tabindex="6"><i class="fa fa-check"></i> 提交</button>
 			</form>
 			</div>
 		<div class="tag-row">
@@ -319,6 +297,7 @@ ${post.title }
 	
 	
 	<script type="text/javascript">
+	
 	function rgb () {
 	 	var a=parseInt(Math.random()*255);
 	 	var b=parseInt(Math.random()*255);
