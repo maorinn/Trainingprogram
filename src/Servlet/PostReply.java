@@ -35,7 +35,7 @@ public class PostReply extends HttpServlet {
 				PostReplyDao dao = new PostReplyDao();
 				boolean insert = dao.seleckPostReply(reply);
 				if (insert) {
-					request.getRequestDispatcher("retrievalSevrlet?postid="+postid).forward(request, response);
+					request.getRequestDispatcher("PostMine?postid="+postid).forward(request, response);
 				}else {
 					response.getWriter().println("Î´Öª´íÎó");
 				}
