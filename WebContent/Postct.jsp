@@ -283,7 +283,7 @@
 	<li component="breadcrumb/current" itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb" class="active">
 		
 			<span itemprop="title">
-				[出售][搬瓦工][$18刀传家宝] IP被墙 06.20到期 带价私聊
+				${Post.title }
 				
 				
 				<a target="_blank" href="/topic/942.rss"><i class="fa fa-rss-square"></i></a>
@@ -307,7 +307,7 @@
 			<i class="pull-left fa fa-arrow-circle-right hidden" title="已移动"></i>
 			
 
-			<span class="topic-title" component="topic/title">[出售][搬瓦工][$18刀传家宝] IP被墙 06.20到期 带价私聊</span>
+			<span class="topic-title" component="topic/title"><p>${Post.title }</p></span>
 		</h1>
 
 		
@@ -354,7 +354,7 @@
 
 			<i component="post/edit-indicator" class="fa fa-pencil-square edit-icon hidden"></i>
 
-			<small data-editor="" component="post/editor" class="hidden">最后由  编辑 <span class="timeago" title=""></span></small>
+			<small data-editor="" component="post/editor" class="hidden">最后由  编辑 <span class="timeago" title="">${Post.item }</span></small>
 
 			
 
@@ -370,20 +370,7 @@
 <br />
 
 <div class="content" component="post/content" itemprop="text">
-	<p><img src="https://i.loli.net/2019/06/18/5d085e3439e8b45344.png" alt="屏幕快照 2019-06-18 上午11.44.36.png" class="img-responsive img-markdown" /> <img src="https://i.loli.net/2019/06/18/5d085e313f7d862230.png" alt="屏幕快照 2019-06-18 上午11.42.22.png" class="img-responsive img-markdown" /> <img src="https://i.loli.net/2019/06/18/5d085f6f84f4637037.png" alt="屏幕快照 2019-06-18 上午11.49.52.png" class="img-responsive img-markdown" /><br />
-DC4<br />
-换IP后可以搬迁：<br />
-US: Los Angeles, California (DC2 QNET) [USCA_2]<br />
-US: Los Angeles, California (DC3 CN2) [USCA_3] – Premium bandwidth multiplier: 0.33x<br />
-US: Los Angeles, California (DC4 MCOM) [USCA_4] (current)<br />
-US: Los Angeles, California (DC8 CN2) [USCA_8] – Premium bandwidth multiplier: 0.33x<br />
-US: Fremont, California [USCA_FMT]<br />
-US: New Jersey [USNJ]<br />
-US: New York [USNY_2]<br />
-CA: British Columbia, Vancouver [CABC_1]<br />
-EU: Amsterdam, Netherlands [EUNL_3]</p>
-<p>亲测可以V2Ray+WS+TLS+CF可以出国<br />
-8k还是无压力的（区别于自己的网络）</p>
+	<p>${Post.mine }</p>
 
 </div>
 
@@ -450,7 +437,7 @@ EU: Amsterdam, Netherlands [EUNL_3]</p>
 	<div class="tags pull-left">
 		
 		<a href="/tags/出售 搬瓦工 传家宝">
-		<span class="tag-item" data-tag="出售 搬瓦工 传家宝" style="">出售 搬瓦工 传家宝</span>
+		<span class="tag-item" data-tag="出售 搬瓦工 传家宝" style="">${Post.item }</span>
 		<span class="tag-topic-count human-readable-number" title="1">1</span></a>
 		
 	</div>
@@ -547,7 +534,7 @@ EU: Amsterdam, Netherlands [EUNL_3]</p>
 	<div class="tags pull-left">
 		
 		<a href="/tags/出售 搬瓦工 传家宝">
-		<span class="tag-item" data-tag="出售 搬瓦工 传家宝" style="">出售 搬瓦工 传家宝</span>
+		<span class="tag-item" data-tag="出售 搬瓦工 传家宝" style="">${Post.item }</span>
 		<span class="tag-topic-count human-readable-number" title="1">1</span></a>
 		
 	</div>
@@ -566,7 +553,7 @@ EU: Amsterdam, Netherlands [EUNL_3]</p>
 	<small>帖子</small>
 </div>
 <div class="stats hidden-xs">
-	<span class="human-readable-number" title="33">33</span><br />
+	<span class="human-readable-number" title="33">${Post.sacn }</span><br />
 	<small>浏览</small>
 </div>
 
