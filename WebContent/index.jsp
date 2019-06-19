@@ -125,7 +125,6 @@ ${post.title }
 		</h2>
 		<div>
 			<div class="description">
-				<div style="background-color: #f3f6f6;width:80px;height:25px;padding-left: 3px;padding-top: 4px; float: left;padding-left:9px"><a href="" style="opacity:1">关键字搜索</a></div>
                <div style="float: left;padding-top: 4px;padding-left: 11px;">
                 <span>${post.time }</span>&nbsp&nbsp&nbsp&nbsp
                 <a href="">${post.username }</a>

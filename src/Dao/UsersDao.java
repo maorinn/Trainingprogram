@@ -174,7 +174,7 @@ public class UsersDao {
 					post.setTitle(rs.getString("title"));
 					post.setUsername(rs.getString("username"));
 					post.setTime(rs.getString("time"));
-					post.setTime(rs.getString("mine"));
+					post.setMine(rs.getString("mine"));
 					post.setScan(rs.getString("scan"));
 					post.setBlock(rs.getString("block"));
 					list.add(post);
