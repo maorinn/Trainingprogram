@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import org.apache.catalina.User;
+
 
 import Javaben.Users;
 import Util.JDBCUtil;
@@ -125,7 +125,7 @@ public class ForgetsDao {
 			try {
 				 conn = JDBCUtil.getConn();
 				
-				 ps = conn.prepareStatement("update users set password=? whhere username=? and email=?");
+				 ps = conn.prepareStatement("update users set password=? where username=? and email=?");
 				ps.setString(1, password);
 				ps.setString(2, username);
 				ps.setString(3, email);
