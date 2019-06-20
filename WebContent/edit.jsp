@@ -508,19 +508,19 @@
 
 			<div class="col-md-9 col-sm-8">
 				<div>
-					<form class="form-horizontal">
+					<form class="form-horizontal" action="test" method="post">
 
 						<div class="control-group">
 							<label class="control-label" for="inputFullname">姓名</label>
 							<div class="controls">
-								<input class="form-control" type="text" id="inputFullname" placeholder="姓名" value="">
+								<input class="form-control" type="text" id="inputFullname" placeholder="姓名" value="" name="name">
 							</div>
 						</div>
 						
 						<div class="control-group">
 							<label class="control-label" for="inputWebsite">网站</label>
 							<div class="controls">
-								<input class="form-control" type="text" id="inputWebsite" placeholder="http://..." value="">
+								<input class="form-control" type="text" id="inputWebsite" placeholder="http://..." value="" name="website">
 							</div>
 						</div>
 						
@@ -528,33 +528,23 @@
 						<div class="control-group">
 							<label class="control-label" for="inputLocation">位置</label>
 							<div class="controls">
-								<input class="form-control" type="text" id="inputLocation" placeholder="位置" value="">
+								<input class="form-control" type="text" id="inputLocation" placeholder="位置" value="" name="position">
 							</div>
 						</div>
 
 						<div class="control-group">
 							<label class="control-label" for="inputBirthday">生日</label>
 							<div class="controls">
-								<input class="form-control hasDatepicker" id="inputBirthday" value="" placeholder="mm/dd/yyyy">
+								<input class="form-control hasDatepicker" id="inputBirthday" value="" placeholder="mm/dd/yyyy" name="birthday">
 							</div>
 						</div>
 
-						<div class="control-group">
-							<label class="control-label" for="grouptitle">群组标题</label>
-							<div class="controls">
-
-								<select class="form-control" id="groupTitle" data-property="groupTitle" multiple="">
-									<option value="">不展示群组称号</option>
-									
-								</select>
-							</div>
-						</div>
 
 						
 						<div class="control-group">
 							<label class="control-label" for="inputAboutMe">关于我</label> <small><label id="aboutMeCharCountLeft">(2/1000)</label></small>
 							<div class="controls">
-								<textarea class="form-control" id="inputAboutMe" rows="5">测试</textarea>
+								<input class="form-control" id="inputAboutMe" name="about">测试</input>
 							</div>
 						</div>
 						
@@ -570,7 +560,7 @@
 						
 						
 
-						<input type="hidden" id="inputUID" value="712"><br>
+						<input type="hidden" id="inputUID" value="${user.username }" name="userid"><br>
 
 						<div class="form-actions">
 							<a id="submitBtn" href="#" class="btn btn-primary">保存更改</a>
