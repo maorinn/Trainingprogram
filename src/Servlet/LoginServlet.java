@@ -25,6 +25,7 @@ public class LoginServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		//得到页面传来的用户名和密码
+		response.getWriter().println("falas");
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		
@@ -39,6 +40,7 @@ public class LoginServlet extends HttpServlet {
 			HttpSession session = request.getSession();
 			session.setAttribute("user", user);
 			response.sendRedirect("index.jsp");
+			
 		}else{
             //如果错误就跳转到登陆页面
 			//密码或用户名错误从新登录

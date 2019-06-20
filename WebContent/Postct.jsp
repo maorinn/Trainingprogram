@@ -181,6 +181,7 @@
 	
 
 	<small class="pull-right">
+	<i class="fa fa-heart-o fa-2x" id="awesome" aria-hidden="true" style=""></i>
 		<span class="post-tools">
 			<a component="post/reply" href="#" class="no-select hidden">回复</a>
 			<a component="post/quote" href="#" class="no-select hidden">引用</a>
@@ -283,6 +284,7 @@
 	${huifu.content }
 
 </div>
+<hr>
 </c:forEach>
 <div class="clearfix post-footer">
 	
@@ -805,7 +807,9 @@
 	</div>
 </div>
 
-
+<!--隐藏域  -->
+<input type="hidden"  name="username" value="${user.username }" />
+<input type="hidden"  name="postid" value="${Post.id }" />
 
 </div>
 
@@ -828,13 +832,20 @@
 	
 
 
-	<script defer src="/assets/nodebb.min.js?v=dbfsljii2ss"></script>
-
-	
+	<script defer src="/assets/nodebb.min.js"></script>
+	<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
 	<script defer type="text/javascript" src="/assets/vendor/jquery/timeago/locales/jquery.timeago.zh-CN.js"></script>
 	
 
 	<script>
+	$("#awesome").click(function(){
+		$.post("awesomes","username="+$("#username").val()+"&postid="+$("#postid").val()+"",function(data,status){
+			 alert(data);
+	    });
+	});
+	
+	
+	
 		window.addEventListener('load', function () {
 			require(['forum/footer']);
 
