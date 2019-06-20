@@ -12,25 +12,28 @@ import Util.JDBCUtil;
 public class UsersDao {
 	
 	//查询用户名和密码是否正确方法
-		public  boolean selecteUserName(String username,String password){
+		public  Users selecteUserName(String username, String email, String password){
 			boolean bl = false;
 			Users Users = null;
 			Connection conn = null;
 			Statement st = null;
 			ResultSet rs = null;
-			Statement ps = null;
+			PreparedStatement ps = null;
 			try {
 				conn = JDBCUtil.getConn();
 				  //在使用预编译对象时，相当于一个占位符
-				   String sql="select * from users where username=?  and password= ?";
+				   String sql="select * from users where username=? and password= ? or email = ? and password = ?";
 				   ps=conn.prepareStatement(sql);
-				   setString(1, username);
-				   setString(2, password);
-				   rs=ps.executeQuery(sql);
-				   if (rs.next()) {					  				
+				   ps.setString(1, username);
+				   ps.setString(2, password);
+				   ps.setString(3, email);
+				   ps.setString(4, password);
+				   rs=ps.executeQuery();
+				   if (rs.next()) {			  				
 					   Users = new Users();
-					   bl = true;
-					  
+					   Users.setUsername(rs.getString("username"));
+					   Users.setEmail(rs.getString("email"));
+					   Users.setPassword(rs.getString("password"));
 				}
 			} catch (SQLException e) {
 				
@@ -38,7 +41,7 @@ public class UsersDao {
 			}finally {
 				JDBCUtil.closeAll(conn, ps, rs);
 			}
-		     	return bl;
+		     	return Users;
 		   }
 
 		//查询用户名和密码是否正确方法
@@ -167,10 +170,11 @@ public class UsersDao {
 				rs=ps.executeQuery();
 				while(rs.next()){
 					Post post = new Post();
+					post.setId(rs.getInt("postid"));
 					post.setTitle(rs.getString("title"));
 					post.setUsername(rs.getString("username"));
 					post.setTime(rs.getString("time"));
-					post.setTime(rs.getString("mine"));
+					post.setMine(rs.getString("mine"));
 					post.setScan(rs.getString("scan"));
 					post.setBlock(rs.getString("block"));
 					list.add(post);
@@ -186,6 +190,42 @@ public class UsersDao {
 			return list;
 			
 		}
+		
+		//根据id查询时间
+		public int selectPostById(String time){
+			int i=0;
+			Connection conn = null;
+			PreparedStatement ps = null;
+			ResultSet rs = null;
+			
+			try {
+				conn = JDBCUtil.getConn();
+				
+				String sql = "select time from post where postid=?";
+				
+				ps = conn.prepareStatement(sql);
+				
+				ps.setString(1, time);;
+			
+				
+				rs=ps.executeQuery();
+				while(rs.next()){
+					if(i>0){
+						i = rs.getInt(i);
+					}
+				}
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				JDBCUtil.closeAll(conn, ps, rs);
+				
+			}
+			return i;
+			
+		}
+		
 		//计数
 		public int countPost(){
 			int i = 0;
@@ -215,6 +255,9 @@ public class UsersDao {
 			return i;
 			
 		}
+		
+		
+		
 		
 		//封装一个根据ID查询帖子
 		public List<Post> selectPost(int id){

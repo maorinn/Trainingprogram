@@ -23,23 +23,25 @@ public class MessageServlet extends HttpServlet {
 		
 		//处理中文乱码
 		request.setCharacterEncoding("utf-8");
+		response.setHeader("content-type", "text/html;charset=UTF-8");
 		
 		
 		Date date = new Date();
-		SimpleDateFormat time = new SimpleDateFormat("yyyy年MM月dd日 HH:mm:ss");
+		SimpleDateFormat time = new SimpleDateFormat("yyyy-MM-dd-HH:mm:ss");
 		String dateString = time.format(date);
 		System.out.println(dateString);
 		
 		String userid = request.getParameter("userid");
 		String title = request.getParameter("title");
 		String mine = request.getParameter("mine");
+		System.out.println(userid+"---------------");
 		post post = new post(title, userid, dateString, mine);
 		postDao postDao = new postDao();
 		int insert = postDao.insert(post);
 		if (insert>0) {
-			System.out.println("发帖成功");
+			response.sendRedirect("DisplaySevrlet");
 		}else {
-			System.out.println("发帖失败");
+			response.getWriter().println("未知错误");
 		}
 		
 		

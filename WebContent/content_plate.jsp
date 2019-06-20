@@ -49,14 +49,12 @@
 	<nav id="menu" class="slideout-menu hidden">
 		<div class="menu-profile">
 	
-</div>
+        </div>
 
-<section class="menu-section" data-section="navigation">
-	<h3 class="menu-section-title">导航</h3>
-	<ul class="menu-section-list"></ul>
-</section>
-
-
+    <section class="menu-section" data-section="navigation">
+	    <h3 class="menu-section-title">导航</h3>
+	    <ul class="menu-section-list"></ul>
+    </section>
 	</nav>
 	<nav id="chats-menu" class="slideout-menu hidden">
 		
@@ -76,12 +74,31 @@
 		</div>
 	</noscript>
 
-<div widget-area="header">
+    <div widget-area="header">
 	
-</div>
-<div class="row">
+    </div>
+    <div class="row">
 
 	<div class="col-lg-9 col-sm-12">
+<<<<<<< HEAD
+	    <div style="height:45px;">
+	        <c:if test="${user!=null}" >
+	        window.onload=function function_name () {
+ 	        var b=document.getElementById('input1')b.value="新主题"; 
+ 	
+             }function_name();
+	    
+	       </c:if>
+	       <script type="text/javascript">
+	 
+	       </script>
+	
+	    
+	
+    <form action="">
+        <input type="button" id='input1' value="登入以发表" style="width:100px;height:45px;background-color:#1a242f;color:#fff;border-radius: 5px; " onclick="hpsb()" >
+    </form>
+=======
 	<div style="height:45px;">
 	<!-- 没有登陆 -->
 	    <c:if test="${user==null}" >
@@ -95,15 +112,15 @@
 </form>
 	</c:if>
 
+>>>>>>> e596a449611384bb8f7833cf71398ab7df7b7da1
 </div>
-<hr>
+    <hr>
 		<h1 class="categories-title">版块</h1>
 		<ul class="categories" itemscope itemtype="http://www.schema.org/ItemList">
-			
-			<li component="categories/category" data-cid="7" data-numRecentReplies="1" class="row clearfix">
-	<meta itemprop="name" content="交易">
+		<li component="categories/category" data-cid="7" data-numRecentReplies="1" class="row clearfix">
+	    <meta itemprop="name" content="交易">
 
-	<div class="content col-xs-12 col-md-7 col-sm-9" style="width:430px">
+	    <div class="content col-xs-12 col-md-7 col-sm-9" style="width:430px">
 		<div class="icon pull-left" style="background-color: #66ccff; color: #fff;">
 			
 		</div>
@@ -111,30 +128,23 @@
 		<h2 class="title">
 			
 
-<a href="" itemprop="url">
-
-自编辑
-</a>
+<a href="" itemprop="url">${list.title }自编辑</a>
 
 		</h2>
 		<div>
 			
 			<div class="description">
-				<div style="background-color: #f3f6f6;width:80px;height:25px;padding-left: 3px;padding-top: 4px; float: left;padding-left:9px"><a href="" style="opacity:1">关键字搜索</a></div>
-               <div style="float: left;padding-top: 4px;padding-left: 11px;">
-                <span>发表时间</span>&nbsp&nbsp&nbsp&nbsp
-                <a href="">用户名</a>
+			    <div style="background-color: #f3f6f6;width:80px;height:25px;padding-left: 3px;padding-top: 4px; float: left;padding-left:9px"><a href="" style="opacity:1">${list.mine }关键字搜索</a></div>
+                <div style="float: left;padding-top: 4px;padding-left: 11px;">
+                    <span>${list.time }发表时间</span>&nbsp&nbsp&nbsp&nbsp
+                    <a href="#">${list.name }用户名</a>
                 </div>
 			</div>
-			
-			
 		</div>
 		<span class="visible-xs pull-right">
-			
 			<a class="permalink" href="/post/2491">
 				<small class="timeago" title="2019-06-13T09:43:14.108Z"></small>
 			</a>
-			
 		</span>
 	</div>
 
@@ -152,7 +162,7 @@
 	</div>
 	
 	<div class="col-md-3 col-sm-3 teaser hidden-xs" component="topic/teaser" style="width:140px">
-		<div class="card"  style="border-color: #66ccff" id="card">
+	<div class="card"  style="border-color: #66ccff" id="card">
 	
 	
 	<div component="category/posts">
@@ -175,9 +185,9 @@
 	
 
 	
-</div>
+    </div>
 
-	</div>
+</div>
 	
 	
 </li>
@@ -319,7 +329,7 @@
 				<button class="btn btn-sm btn-primary composer-submit" data-action="post" tabindex="-1"><i class="fa fa-chevron-right"></i></button>
 			</div>
 		</nav>
-		<form action="/test">
+		<form action="MessageServlet">
 		<div class="row title-container">
 			
 			<div>
@@ -356,7 +366,8 @@
 				</div>
 				<div class="pull-right draft-icon hidden-md hidden-lg"></div>
 				<!-- <textarea class="write" tabindex="4" dir="ltr"></textarea> -->
-				<input type="text" class="write" name="content">
+				<input type="text" class="write" name="mine">
+				<input type="text" name="userid" style="display:none" value="${user.username }">
 			</div>
 
 		</div>

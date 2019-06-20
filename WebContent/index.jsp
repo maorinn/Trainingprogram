@@ -37,9 +37,21 @@
 		};
 	</script>
 
-	
+	<style type="text/css">
+				#input1:hover{
+				
+				}
+			</style>
 	
 </head>
+
+<c:if test="${list==null }">
+
+<c:redirect url="DisplaySevrlet"/>
+
+</c:if>
+
+
 
 <body class="page-categories page-status-200 skin-flatly">
 	<nav id="menu" class="slideout-menu hidden">
@@ -76,57 +88,69 @@
 	
 </div>
 <div class="row">
-	<div class="col-lg-9 col-sm-12">
-		<h1 class="categories-title">版块</h1>
+
+	<div class=" col-sm-12">
+	<div style="height:45px;">
+	<!-- 没有登陆 -->
+	    <c:if test="${user==null}" >
+		<button  id='input1' value="登入以发表" style="width:100px;height:45px;background-color:#1a242f;color:#fff;border-radius: 5px; " ><a href="login.jsp">登陆以发表</a></button>
+	    </c:if>
+	<!-- 登陆了 -->
+	
+	<c:if test="${user!=null }">
+	<form action="">
+<input type="button" id='input1' value="新帖子" style="width:100px;height:45px;background-color:#1a242f;color:#fff;border-radius: 5px; " onclick="hpsb()" >
+</form>
+	</c:if>
+
+</div>
+<hr>
+		<h1 class="categories-title">帖子列表</h1>
 		<ul class="categories" itemscope itemtype="http://www.schema.org/ItemList">
-			
-			<li component="categories/category" data-cid="7" data-numRecentReplies="1" class="row clearfix">
-	<meta itemprop="name" content="交易">
-
-	<div class="content col-xs-12 col-md-7 col-sm-9">
+		<c:forEach var="post" items="${list }" >
+		<!-- 循环遍历帖子 -->
+		
+		
+	
+		<li component="categories/category" data-cid="7" data-numRecentReplies="1" class="row clearfix">
+	<div class="content col-xs-12 col-md-7 col-sm-9" style="width:430px">
 		<div class="icon pull-left" style="background-color: #66ccff; color: #fff;">
-			
+			<!-- 显示头像 -->
 		</div>
-
 		<h2 class="title">
-			
-
-<a href="content_plate.jsp?id=1" itemprop="url">
-
-交易
+<a href="PostMine?postid=${post.id }" itemprop="url">
+<!-- 显示标题 -->
+${post.title }
 </a>
-
 		</h2>
 		<div>
-			
 			<div class="description">
-				<p>买卖租等（本论坛主力区域）</p>
-
+               <div style="float: left;padding-top: 4px;padding-left: 11px;">
+                <span>${post.time }</span>&nbsp&nbsp&nbsp&nbsp
+                <a href="">${post.username }</a>
+                </div>
 			</div>
 			
 			
 		</div>
-		<span class="visible-xs pull-right">
-			
-			<a class="permalink" href="/post/2491">
-				<small class="timeago" title="2019-06-13T09:43:14.108Z"></small>
-			</a>
-			
-		</span>
+
 	</div>
 
-	
 	<div class="col-md-1 hidden-sm hidden-xs stats">
-		<span class="unread human-readable-number" title="709">709</span><br />
-		<small>主题</small>
+		<span class="unread human-readable-number" title="709">0</span><br />
+		<small>赞同</small>
+	</div>
+	<div class="col-md-1 hidden-sm hidden-xs stats">
+		<span class="unread human-readable-number" title="709">7</span><br />
+		<small>帖子</small>
 	</div>
 	<div class="col-md-1 hidden-sm hidden-xs stats">
 		<span class="unread human-readable-number" title="1941">1941</span><br />
-		<small>帖子</small>
+		<small>浏览</small>
 	</div>
 	
-	<div class="col-md-3 col-sm-3 teaser hidden-xs" component="topic/teaser">
-		<div class="card" style="border-color: #66ccff">
+	<div class="col-md-3 col-sm-3 teaser hidden-xs" component="topic/teaser" style="width:140px">
+		<div class="card"  style="border-color: #66ccff" id="card">
 	
 	
 	<div component="category/posts">
@@ -145,632 +169,159 @@
 
 		</div>
 	</div>
-	
-	
-
-	
 </div>
-
 	</div>
-	
-	
 </li>
-
-			
-			<li component="categories/category" data-cid="22" data-numRecentReplies="1" class="row clearfix">
-	<meta itemprop="name" content="教程及信息">
-
-	<div class="content col-xs-12 col-md-7 col-sm-9">
-		<div class="icon pull-left" style="background-color: #86C1B9; color: #333;">
-			
-		</div>
-
-		<h2 class="title">
-			
-
-<a href="content_plate.jsp?id=2" itemprop="url">
-
-教程及信息
-</a>
-
-		</h2>
-		<div>
-			
-			<div class="description">
-				<p>仅允许 重大信息 或 教程发布</p>
-
-			</div>
-			
-			
-		</div>
-		<span class="visible-xs pull-right">
-			
-			<a class="permalink" href="/post/2388">
-				<small class="timeago" title="2019-06-10T15:53:22.603Z"></small>
-			</a>
-			
-		</span>
-	</div>
-
-	
-	<div class="col-md-1 hidden-sm hidden-xs stats">
-		<span class="unread human-readable-number" title="9">9</span><br />
-		<small>主题</small>
-	</div>
-	<div class="col-md-1 hidden-sm hidden-xs stats">
-		<span class="unread human-readable-number" title="27">27</span><br />
-		<small>帖子</small>
+	</c:forEach>
 	</div>
 	
-	<div class="col-md-3 col-sm-3 teaser hidden-xs" component="topic/teaser">
-		<div class="card" style="border-color: #86C1B9">
-	
-	
-	<div component="category/posts">
-		<p>
-			<a href="/user/leonn">
-				
-				<img class="user-img" title="Leonn" alt="Leonn" src="https://i.loli.net/2019/05/05/5ccefd2a9b833.jpeg">
-				
-			</a>
-			<a class="permalink" href="/topic/812/post/1">
-				<small class="timeago" title="2019-06-10T15:53:22.603Z"></small>
-			</a>
-		</p>
-		<div class="post-content">
+	<div component="pagination" class="text-center pagination-container">
+	<ul class="pagination hidden-xs">
+	    <c:if test="${page-1>=1 }">
+	        <!-- <li class="previous pull-left disabled"> -->
+	        <li class="previous pull-left">
+			    <a href="DisplaySevrlet?page=${page-1 }" data-page="1"><i class="fa fa-chevron-left"></i> </a>
+		    </li> 
+		</c:if>
 			
-全文转自 EQBLOG 大佬在 Hostloc 发布的帖子
+			<c:forEach var="i" begin="1" end="${maxPage }">
+			<li class="page">
+				<a href="DisplaySevrlet?page=${i }" data-page="10">${i }</a>
+			</li>
+			</c:forEach>
+			
+			
+         <c:if test="${page+1<=maxPage}">
+			<li class="next pull-right">
+			<a href="DisplaySevrlet?page=${page+1 }" data-page="2"> <i class="fa fa-chevron-right"></i></a>
+		    </li>
+		</c:if>
+		
+	</ul>
 
-js2py是一个可以让你在python执行JavaScript脚本的库，非常的好玩。
-比如  你可以这样写
-import js2py
-
-js=js2py.EvalJs()
-js.execute(&quot;function writeMessage(){return 'message'}&quot;)
-get_return=js.writeMessage()
-
-print(get_return)
-
-这样就可以获取到了JavaScript里边的返回值了，有啥用呢，就是可以让你在写爬虫的时候把包含加密函数的js文件直接加载，然后运行即可。比如loc：
-你可以这样写：
-def retrun_cookie():
-    js=js2py.EvalJs()
-
-    aesjs=requests.get(&quot;https://www.hostloc.com/aes.min.js&quot;,timeout=5).text
-    js.execute(aesjs)
-    getcookie=requests.get(&quot;https://www.hostloc.com/&quot;).text
-    getcookie_script=re.findall(&quot;&lt;script&gt;(.*?)&lt;/script&gt;&quot;,getcookie)
-    js.execute(getcookie_script[0].split(&quot;document&quot;)[0])
-    data=js.toHex(js.slowAES.decrypt(js.c, 2, js.a, js.b))
-    cookie=&quot;L7FW=&quot;+data
-    return cookie
-
-当然使用这个cookie的时候，你得写到header头里面，并且得访问一次https://www.hostloc.com/?d=1
-loc登陆的时候需要一个loginhash才能正确登陆。
-emm为什么不给完整脚本呢，因为现在好像把检测关了，没法写了
-
-然后附一个爬91的小脚本，总所周知91加密了  拿js加密的
-需要安装python3+requests+js2py
-小附件
-
-Github地址：https://github.com/eqblog/
-
-
-		</div>
-	</div>
-	
-	
-
-	
 </div>
-
-	</div>
 	
-	
-</li>
-
-			
-			<li component="categories/category" data-cid="16" data-numRecentReplies="1" class="row clearfix">
-	<meta itemprop="name" content="主机测评及优惠">
-
-	<div class="content col-xs-12 col-md-7 col-sm-9">
-		<div class="icon pull-left" style="background-color: #F7CA88; color: #333;">
-			
-		</div>
-
-		<h2 class="title">
-			
-
-<a href="content_plate.jsp?id=3" itemprop="url">
-
-主机测评及优惠
-</a>
-
-		</h2>
-		<div>
-			
-			<div class="description">
-				<p>主机优惠/测评/AFF信息专区</p>
-
-			</div>
-			
-			
-		</div>
-		<span class="visible-xs pull-right">
-			
-			<a class="permalink" href="/post/2439">
-				<small class="timeago" title="2019-06-12T03:20:27.080Z"></small>
-			</a>
-			
-		</span>
-	</div>
-
-	
-	<div class="col-md-1 hidden-sm hidden-xs stats">
-		<span class="unread human-readable-number" title="31">31</span><br />
-		<small>主题</small>
-	</div>
-	<div class="col-md-1 hidden-sm hidden-xs stats">
-		<span class="unread human-readable-number" title="62">62</span><br />
-		<small>帖子</small>
-	</div>
-	
-	<div class="col-md-3 col-sm-3 teaser hidden-xs" component="topic/teaser">
-		<div class="card" style="border-color: #F7CA88">
-	
-	
-	<div component="category/posts">
-		<p>
-			<a href="/user/yiwu">
-				
-				<img class="user-img" title="yiwu" alt="yiwu" src="https://www.gravatar.com/avatar/8ed9a1015305c0ff320600e917bebc4e?size=192&d=monsterid">
-				
-			</a>
-			<a class="permalink" href="/topic/792/post/4">
-				<small class="timeago" title="2019-06-12T03:20:27.080Z"></small>
-			</a>
-		</p>
-		<div class="post-content">
-			性价比可以，本人使用能够在任何时间段保证流畅看1080p的YouTube节目
-
-		</div>
-	</div>
-	
-	
-
-	
-</div>
-
-	</div>
-	
-	
-</li>
-
-			
-			<li component="categories/category" data-cid="23" data-numRecentReplies="1" class="row clearfix">
-	<meta itemprop="name" content="商家 Offer">
-
-	<div class="content col-xs-12 col-md-7 col-sm-9">
-		<div class="icon pull-left" style="background-color: #AB4642; color: #fff;">
-			
-		</div>
-
-		<h2 class="title">
-			
-
-<a href="content_plate.jsp?id=4" itemprop="url">
-
-商家 Offer
-</a>
-
-		</h2>
-		<div>
-			
-			<div class="description">
-				<p>商家官方 Offer 发布地</p>
-
-			</div>
-			
-			
-		</div>
-		<span class="visible-xs pull-right">
-			
-			<a class="permalink" href="/post/1772">
-				<small class="timeago" title="2019-05-27T04:04:31.076Z"></small>
-			</a>
-			
-		</span>
-	</div>
-
-	
-	<div class="col-md-1 hidden-sm hidden-xs stats">
-		<span class="unread human-readable-number" title="4">4</span><br />
-		<small>主题</small>
-	</div>
-	<div class="col-md-1 hidden-sm hidden-xs stats">
-		<span class="unread human-readable-number" title="17">17</span><br />
-		<small>帖子</small>
-	</div>
-	
-	<div class="col-md-3 col-sm-3 teaser hidden-xs" component="topic/teaser">
-		<div class="card" style="border-color: #AB4642">
-	
-	
-	<div component="category/posts">
-		<p>
-			<a href="/user/drcai">
-				
-				<img class="user-img" title="drcai" alt="drcai" src="https://i.loli.net/2019/05/05/5cce1a4ee7e10.jpeg">
-				
-			</a>
-			<a class="permalink" href="/topic/524/post/5">
-				<small class="timeago" title="2019-05-27T04:04:31.076Z"></small>
-			</a>
-		</p>
-		<div class="post-content">
-			独立IP版目前只有济南移动机房了 …
-河南 山东NAT 均有货…
-上海 CN2 预计 6月中旬再补货了 .
-
-		</div>
-	</div>
-	
-	
-
-	
-</div>
-
-	</div>
-	
-	
-</li>
-
-			
-			<li component="categories/category" data-cid="12" data-numRecentReplies="1" class="row clearfix">
-	<meta itemprop="name" content="一般讨论">
-
-	<div class="content col-xs-12 col-md-7 col-sm-9">
-		<div class="icon pull-left" style="background-color: #86C1B9; color: #333;">
-			
-		</div>
-
-		<h2 class="title">
-			
-
-<a href="/category/12/一般讨论" itemprop="url">
-
-一般讨论
-</a>
-
-		</h2>
-		<div>
-			
-			<div class="description">
-				<p>主要是水</p>
-
-			</div>
-			
-			
-		</div>
-		<span class="visible-xs pull-right">
-			
-			<a class="permalink" href="/post/2405">
-				<small class="timeago" title="2019-06-11T07:48:34.007Z"></small>
-			</a>
-			
-		</span>
-	</div>
-
-	
-	<div class="col-md-1 hidden-sm hidden-xs stats">
-		<span class="unread human-readable-number" title="27">27</span><br />
-		<small>主题</small>
-	</div>
-	<div class="col-md-1 hidden-sm hidden-xs stats">
-		<span class="unread human-readable-number" title="164">164</span><br />
-		<small>帖子</small>
-	</div>
-	
-	<div class="col-md-3 col-sm-3 teaser hidden-xs" component="topic/teaser">
-		<div class="card" style="border-color: #86C1B9">
-	
-	
-	<div component="category/posts">
-		<p>
-			<a href="/user/mrwangzhe">
-				
-				<img class="user-img" title="mrwangzhe" alt="mrwangzhe" src="https://www.gravatar.com/avatar/c2b84726cc4824feb512ef9b75b54a3f?size=192&d=monsterid">
-				
-			</a>
-			<a class="permalink" href="/topic/794/post/3">
-				<small class="timeago" title="2019-06-11T07:48:34.007Z"></small>
-			</a>
-		</p>
-		<div class="post-content">
-			@Leonn 用了都没人说一声 差评
-
-		</div>
-	</div>
-	
-	
-
-	
-</div>
-
-	</div>
-	
-	
-</li>
-
-			
-			<li component="categories/category" data-cid="5" data-numRecentReplies="1" class="row clearfix">
-	<meta itemprop="name" content="站点公告">
-
-	<div class="content col-xs-12 col-md-7 col-sm-9">
-		<div class="icon pull-left" style="background-color: #ff6f00; color: #000000;">
-			
-		</div>
-
-		<h2 class="title">
-			
-
-<a href="/category/5/站点公告" itemprop="url">
-
-站点公告
-</a>
-
-		</h2>
-		<div>
-			
-			<div class="description">
-				<p>论坛官方信息发布</p>
-
-			</div>
-			
-			
-		</div>
-		<span class="visible-xs pull-right">
-			
-			<a class="permalink" href="/post/2384">
-				<small class="timeago" title="2019-06-10T15:11:13.540Z"></small>
-			</a>
-			
-		</span>
-	</div>
-
-	
-	<div class="col-md-1 hidden-sm hidden-xs stats">
-		<span class="unread human-readable-number" title="28">28</span><br />
-		<small>主题</small>
-	</div>
-	<div class="col-md-1 hidden-sm hidden-xs stats">
-		<span class="unread human-readable-number" title="124">124</span><br />
-		<small>帖子</small>
-	</div>
-	
-	<div class="col-md-3 col-sm-3 teaser hidden-xs" component="topic/teaser">
-		<div class="card" style="border-color: #ff6f00">
-	
-	
-	<div component="category/posts">
-		<p>
-			<a href="/user/leonn">
-				
-				<img class="user-img" title="Leonn" alt="Leonn" src="https://i.loli.net/2019/05/05/5ccefd2a9b833.jpeg">
-				
-			</a>
-			<a class="permalink" href="/topic/448/post/4">
-				<small class="timeago" title="2019-06-10T15:11:13.540Z"></small>
-			</a>
-		</p>
-		<div class="post-content">
-			upup
-
-		</div>
-	</div>
-	
-	
-
-	
-</div>
-
-	</div>
-	
-	
-</li>
-
-			
-			<li component="categories/category" data-cid="14" data-numRecentReplies="1" class="row clearfix">
-	<meta itemprop="name" content="站点问题">
-
-	<div class="content col-xs-12 col-md-7 col-sm-9">
-		<div class="icon pull-left" style="background-color: #AB4642; color: #fff;">
-			
-		</div>
-
-		<h2 class="title">
-			
-
-<a href="/category/14/站点问题" itemprop="url">
-
-站点问题
-</a>
-
-		</h2>
-		<div>
-			
-			<div class="description">
-				<p>论坛使用问题反馈</p>
-
-			</div>
-			
-			
-		</div>
-		<span class="visible-xs pull-right">
-			
-			<a class="permalink" href="/post/1849">
-				<small class="timeago" title="2019-05-28T16:27:29.140Z"></small>
-			</a>
-			
-		</span>
-	</div>
-
-	
-	<div class="col-md-1 hidden-sm hidden-xs stats">
-		<span class="unread human-readable-number" title="7">7</span><br />
-		<small>主题</small>
-	</div>
-	<div class="col-md-1 hidden-sm hidden-xs stats">
-		<span class="unread human-readable-number" title="26">26</span><br />
-		<small>帖子</small>
-	</div>
-	
-	<div class="col-md-3 col-sm-3 teaser hidden-xs" component="topic/teaser">
-		<div class="card" style="border-color: #AB4642">
-	
-	
-	<div component="category/posts">
-		<p>
-			<a href="/user/kirito">
-				
-				<img class="user-img" title="Kirito" alt="Kirito" src="https://www.gravatar.com/avatar/62969a94032fa39b0e018acb4c57e866?size=192&d=monsterid">
-				
-			</a>
-			<a class="permalink" href="/topic/614/post/5">
-				<small class="timeago" title="2019-05-28T16:27:29.140Z"></small>
-			</a>
-		</p>
-		<div class="post-content">
-			不要见到风就是雨
-
-		</div>
-	</div>
-	
-	
-
-	
-</div>
-
-	</div>
-	
-	
-</li>
-
-			
-		</ul>
-	</div>
-	<div widget-area="sidebar" class="col-lg-3 col-sm-12 ">
-		
-		  <div class="panel panel-primary"> 
-   <div class="panel-heading"> 
-    <h3 class="panel-title">赞助商广告</h3> 
-   </div> 
-   <div class="panel-body">
-    <div class=""> 
-     <a href="https://www.simcentric.com/sc/promos/jun-promo/?utm_source=ly&utm_medium=2019june" target="_blank"><img src="https://bbs.liyuans.com/assets/uploads/files/20190530_junepromobanner_300x250.jpg"  style="width:100%;" /></a> 
-    </div> 
-   </div> 
-  </div>  
-		
-		  <div class="panel panel-primary"> 
-   <div class="panel-heading"> 
-    <h3 class="panel-title">广告位</h3> 
-   </div> 
-   <div class="panel-body">
-    <div class="row forum-stats"> 
-<div class="row">
- <ul>
-     <li> 广告位招租 </li>
-     <li>点击 <a href="http://shop.ixh.me/cart.php?gid=2" target="_blank">了解详情</a>  </li>
-</ul>
-</div>
-    </div> 
-   </div> 
-  </div>  
-		
-		<div class="panel panel-primary"><div class="panel-heading"><h3 class="panel-title">板块</h3></div><div class="panel-body">
-<ul class="categories-list">
-	<li>
-		
-		<h4><a href="/category/7/交易">交易</a></h4>
-		
-		<p><p>买卖租等（本论坛主力区域）</p>
-</p>
-	</li>
-</ul>
-
-<ul class="categories-list">
-	<li>
-		
-		<h4><a href="/category/22/post">教程及信息</a></h4>
-		
-		<p><p>仅允许 重大信息 或 教程发布</p>
-</p>
-	</li>
-</ul>
-
-<ul class="categories-list">
-	<li>
-		
-		<h4><a href="/category/16/post">主机测评及优惠</a></h4>
-		
-		<p><p>主机优惠/测评/AFF信息专区</p>
-</p>
-	</li>
-</ul>
-
-<ul class="categories-list">
-	<li>
-		
-		<h4><a href="/category/23/post">商家 Offer</a></h4>
-		
-		<p><p>商家官方 Offer 发布地</p>
-</p>
-	</li>
-</ul>
-
-<ul class="categories-list">
-	<li>
-		
-		<h4><a href="/category/12/一般讨论">一般讨论</a></h4>
-		
-		<p><p>主要是水</p>
-</p>
-	</li>
-</ul>
-
-<ul class="categories-list">
-	<li>
-		
-		<h4><a href="/category/5/站点公告">站点公告</a></h4>
-		
-		<p><p>论坛官方信息发布</p>
-</p>
-	</li>
-</ul>
-
-<ul class="categories-list">
-	<li>
-		
-		<h4><a href="/category/14/站点问题">站点问题</a></h4>
-		
-		<p><p>论坛使用问题反馈</p>
-</p>
-	</li>
-</ul>
-</div></div>
-		
-	</div>
-</div>
-
 
 
 	<script defer src="/assets/nodebb.min.js?v=dbfsljii2ss"></script>
-
-	
-	
-
 	<div class="hide">
 	</div>
+	
+	
+	
+
+	
+	<div component="composer" class="composer resizable" data-uuid="d75c9974-c60b-4512-a3f5-5ab2efb9cdbc" style="top:72.6124%;" id='i'>
+
+	<div class="composer-container">
+		<nav class="navbar navbar-fixed-top mobile-navbar hidden-md hidden-lg">
+			<div class="btn-group">
+				<button class="btn btn-sm btn-primary composer-discard" data-action="discard" tabindex="-1"><i class="fa fa-times"></i></button>
+				<button class="btn btn-sm btn-primary composer-minimize" data-action="minimize" tabindex="-1"><i class="fa fa-minus"></i></button>
+			</div>
+			
+			<div class="category-name-container">
+				<span class="category-name">交易</span> <i class="fa fa-sort"></i>
+			</div>
+			
+			
+			<div class="btn-group">
+				<button class="btn btn-sm btn-primary composer-submit" data-action="post" tabindex="-1"><i class="fa fa-chevron-right"></i></button>
+			</div>
+		</nav>
+		<form action="MessageServlet" method="post">
+		<div class="row title-container">
+			
+			<div>
+				
+				<input class="title form-control" type="text" tabindex="1" name="title" placeholder="在此输入您主题的标题..." value="">
+				
+				<ul class="dropdown-menu quick-search-results hidden">
+					
+
+				</ul>
+			</div>
+
+			
+			<div class="category-list-container hidden-sm hidden-xs"><div component="category-selector" class="btn-group pull-right dropup">
+	
+	<div component="category-selector-search" class="hidden">
+		<input type="text" class="form-control" autocomplete="off">
+	</div>
+	
+</div></div>
+			
+
+			<div class="pull-right draft-icon"></div>
+
+			
+		</div>
+
+
+
+		<div class="row write-preview-container">
+			<div class="write-container">
+				<div class="help-text">
+					<span class="help">编写帮助 <i class="fa fa-question-circle"></i></span>
+				</div>
+				<div class="pull-right draft-icon hidden-md hidden-lg"></div>
+				<!-- <textarea class="write" tabindex="4" dir="ltr"></textarea> -->
+				<input type="text" class="write" name="mine">
+				
+				<input type="text" name="userid" style="display:none" value="${user.username }">
+			</div>
+
+		</div>
+
+		<div class="btn-group pull-right action-bar hidden-sm hidden-xs">
+				<button class="btn btn-default composer-discard" data-action="discard" tabindex="-1"><i class="fa fa-times"></i> 撤销</button>
+
+				<button type="submit" class="btn btn-primary composer-submit" tabindex="6"><i class="fa fa-check"></i> 提交</button>
+			</form>
+			</div>
+		<div class="tag-row">
+			<div class="tags-container">
+				<div class="btn-group dropup hidden" component="composer/tag/dropdown">
+					<button class="btn btn-default dropdown-toggle" data-toggle="dropdown" type="button">
+						<span class="visible-sm-inline visible-md-inline visible-lg-inline"><i class="fa fa-tags"></i></span>
+						<span class="caret"></span>
+					</button>
+				</div>
+				
+		</div>
+	</div>
+</div>
+	
+	
+	
+	
+	<script type="text/javascript">
+	
+	function rgb () {
+	 	var a=parseInt(Math.random()*255);
+	 	var b=parseInt(Math.random()*255);
+	 	var c=parseInt(Math.random()*255);
+	 	return "rgb("+a+","+b+","+c+")"
+	 }
+	 function function_name () {
+		 
+	 	 var d=document.getElementById('card'); 
+	 	var i=document.getElementById('i');
+	 	i.style.visibility="hidden";
+	    d.style.borderColor=rgb();
+	 	/*d.style.backgroundColor=rgb();
+	 	d.style.color=rgb();*/
+	 	
+	 }
+	 function hpsb (){
+		var i=document.getElementById('i');
+		i.style.visibility="visible";
+		
+	 }
+	 
+	function_name();
+			</script>
+			
+			
 </body>
 </html>

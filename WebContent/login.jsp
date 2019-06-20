@@ -78,7 +78,7 @@
 <div class="row">
 	<div class="col-lg-9 col-sm-12">
 	     <div class="categories-title">
-           <a href="#" style="color:#18bc9c; text-decoration: none; font-size: 17px;">主页 / </a>
+           <a href="index.jsp" style="color:#18bc9c; text-decoration: none; font-size: 17px;">主页 / </a>
            <a href="#" style="color:#C9E0E0; text-decoration: none; font-size: 17px;">登录</a>
         </div>
         <div class="login">

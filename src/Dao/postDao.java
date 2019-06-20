@@ -49,10 +49,10 @@ public class postDao {
 		try {
 			 conn = JDBCUtil.getConn();
 			 ps = conn.prepareStatement("insert into post(title,username,time,mine) values (?,?,?,?)");
-			ps.setString(1,post.getTitle());
-			ps.setString(2,post.getUsername());
-			ps.setString(3,post.getTime());
-			ps.setString(4,post.getMine());
+			 ps.setString(1,post.getTitle());
+			 ps.setString(2,post.getUsername());
+			 ps.setString(3,post.getTime());
+			 ps.setString(4,post.getMine());
 			 i = ps.executeUpdate();
 			if(i>0){
 				System.out.println("true");
