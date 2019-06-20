@@ -70,7 +70,7 @@
 <ol class="breadcrumb">
 	
 	<li itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb">
-		<a href="/" itemprop="url">
+		<a href="./" itemprop="url">
 			<span itemprop="title">
 				主页
 				
@@ -181,7 +181,7 @@
 	
 
 	<small class="pull-right">
-	<i class="fa fa-heart-o fa-2x" id="awesome" aria-hidden="true" style=""></i>
+	<a href="#"><i class="fa fa-heart-o fa-2x" aria-hidden="true" id="awesome"></i></a>
 		<span class="post-tools">
 			<a component="post/reply" href="#" class="no-select hidden">回复</a>
 			<a component="post/quote" href="#" class="no-select hidden">引用</a>
@@ -189,16 +189,12 @@
 
 		
 		<span class="votes">
-			<a component="post/upvote" href="#" class="">
-				<i class="fa fa-chevron-up"></i>
-			</a>
+			
 
-			<span component="post/vote-count" data-votes="0">0</span>
+			<span component="post/vote-count" id="Likenumber">0</span>
 
 			
-			<a component="post/downvote" href="#" class="">
-				<i class="fa fa-chevron-down"></i>
-			</a>
+			
 			
 		</span>
 		
@@ -808,8 +804,8 @@
 </div>
 
 <!--隐藏域  -->
-<input type="hidden"  name="username" value="${user.username }" />
-<input type="hidden"  name="postid" value="${Post.id }" />
+<input type="hidden"  id="username" value="${user.username }" />
+<input type="hidden"  id="postid" value="${Post.id }" />
 
 </div>
 
@@ -839,18 +835,34 @@
 
 	<script>
 	$("#awesome").click(function(){
-		$.post("awesomes","username="+$("#username").val()+"&postid="+$("#postid").val()+"",function(data,status){
-			 alert(data);
+		$.get("awesomes","username="+$("#username").val()+"&postid="+$("#postid").val()+"",function(data,status){
+			isawesome();
+			alert(data);
+			 isawesome();
 	    });
 	});
 	
+	function isawesome()
+	{
+		$.get("isAwesome","username="+$("#username").val()+"&postid="+$("#postid").val()+"",function(data,status){
+			p = JSON.parse(data);
+			$("#Likenumber").text(+p.numberoflikes);
+			if (p.ispraise==1) {
+				$("#awesome").attr("class","fa fa-heart fa-2x");
+			}else {
+				$("#awesome").attr("class","fa fa-heart-o fa-2x");
+			}
+	    });
+	}
 	
-	
+
 		window.addEventListener('load', function () {
 			require(['forum/footer']);
 
 			
 		});
+		
+		$(document).ready(isawesome());
 	</script>
 
 	<div class="hide">

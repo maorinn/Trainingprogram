@@ -113,7 +113,7 @@
 							
 							<li role="presentation" class="divider"></li>
 							<li component="user/logout">
-								<form method="post" action="/logout">
+								<form method="post" action="./logout">
 									<input type="hidden" name="_csrf" value="TKbDHRWC-K3ZoWC5mMOeGUafciSBtP7r6DbI">
 									<input type="hidden" name="noscript" value="true">
 									<button type="submit" class="btn btn-link">

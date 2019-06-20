@@ -508,7 +508,7 @@
 
 			<div class="col-md-9 col-sm-8">
 				<div>
-					<form class="form-horizontal" action="test" method="post">
+					<form class="form-horizontal" action="enit" method="post">
 
 						<div class="control-group">
 							<label class="control-label" for="inputFullname">姓名</label>
@@ -554,7 +554,7 @@
 						<div class="control-group">
 							<label class="control-label" for="inputSignature">签名档</label> <small><label id="signatureCharCountLeft">(2/255)</label></small>
 							<div class="controls">
-								<textarea class="form-control" id="inputSignature" rows="5">测试</textarea>
+								<textarea class="form-control" id="inputSignature" rows="5" name="">测试</textarea>
 							</div>
 						</div>
 						

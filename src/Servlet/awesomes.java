@@ -16,24 +16,36 @@ import Dao.PraiseDao;
 public class awesomes extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html;charset=UTF-8");
 		int postid =  Integer.parseInt(request.getParameter("postid"));
-		String username = request.getParameter("userid");
+		String username = request.getParameter("username");
 		boolean ispraise = false;//是否点赞
 		int Numberoflikes = 0;
+		System.out.println("触发了");
 		if (username==null||username.equals("")) {
 			response.getWriter().println("你还未登陆！");
 		}else {
 			PraiseDao praiseDao = new PraiseDao();
 			String praise = praiseDao.getamlist(postid);
-			String[] praiselist = praise.split("|");
-			//获取点赞人数
-			Numberoflikes = praiselist.length;
-			for (String c : praiselist) {
-				if (c.equals(username)) {
-					//判断是否点赞
-					ispraise = true;
+			System.out.println(praise);
+			//判断帖子是否第一次获赞
+			if (praise!=null&&!praise.equals("")) {
+				String[] praiselist = praise.split("\\|");
+				//获取点赞人数
+				System.out.println("不为空");
+				Numberoflikes = praiselist.length;
+				for (String c : praiselist) {
+					System.out.println("用户名："+c);
+					if (c.equals(username)) {
+						//判断是否点赞
+						
+						ispraise = true;
+					}
 				}
 			}
+			
+			
 			//没有点赞
 			if (!ispraise) {
 				boolean addPraise = praiseDao.AddPraise(postid, username);
@@ -51,6 +63,7 @@ public class awesomes extends HttpServlet {
 					response.getWriter().println("未知错误");
 				}
 			}
+		
 		}
 	}
 
